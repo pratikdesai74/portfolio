@@ -57,24 +57,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://pratikdesai.dev",
     siteName: "Pratik Desai Portfolio",
-    title: "Pratik Desai | Senior Software Engineer",
+    title: "Pratik Desai | Senior Software Engineer - Available for Remote Roles",
     description:
-      "Senior Software Engineer specializing in Fintech, Payments, and Cybersecurity. 7+ years building scalable distributed systems.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Pratik Desai - Senior Software Engineer",
-      },
-    ],
+      "Senior Software Engineer available for remote opportunities. 7+ years in Fintech, Payments & Cybersecurity. Java, Spring Boot, Kafka, AWS expert.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Pratik Desai | Senior Software Engineer",
     description:
-      "Senior Software Engineer specializing in Fintech, Payments, and Cybersecurity.",
-    images: ["/og-image.png"],
+      "Senior Software Engineer available for remote roles. 7+ years in Fintech, Payments & Cybersecurity.",
+    creator: "@pratikdesai",
   },
   robots: {
     index: true,
