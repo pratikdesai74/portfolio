@@ -123,6 +123,19 @@ export const projects = [
       { label: "Users", value: "30K+" },
     ],
   },
+  {
+    id: 4,
+    title: "Marvel - Class Management System",
+    description: "Full-stack web application to manage private class operations end-to-end.",
+    longDescription: "Built a comprehensive class management platform handling attendance tracking, notes distribution, and video content delivery. Streamlined operations for private coaching classes with an intuitive interface for both instructors and students.",
+    github: "https://github.com/desaiclasses/marvel",
+    tech: ["React", "Node.js", "MongoDB", "Express", "REST APIs"],
+    featured: true,
+    metrics: [
+      { label: "Features", value: "All-in-One" },
+      { label: "Users", value: "Students" },
+    ],
+  },
 ];
 
 export const skills = {
