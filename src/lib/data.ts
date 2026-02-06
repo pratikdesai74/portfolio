@@ -126,14 +126,14 @@ export const projects = [
   {
     id: 4,
     title: "Marvel - Class Management System",
-    description: "Full-stack web application to manage private class operations end-to-end.",
-    longDescription: "Built a comprehensive class management platform handling attendance tracking, notes distribution, and video content delivery. Streamlined operations for private coaching classes with an intuitive interface for both instructors and students.",
+    description: "Full-stack web application to manage private class operations with cost-optimized infrastructure.",
+    longDescription: "Built a comprehensive class management platform handling attendance tracking, notes distribution, and video content delivery. Initially hosted on Raspberry Pi with GitHub Actions CI/CD, later migrated to on-premise server with Google Cloud reverse proxy. Maximized open-source tools to minimize costs while maintaining production-grade reliability.",
     github: "https://github.com/desaiclasses/marvel",
-    tech: ["Java", "Spring Boot", "Docker", "Docker Compose", "MySQL", "REST APIs"],
+    tech: ["Java", "Spring Boot", "Docker", "Raspberry Pi", "GitHub Actions", "GCP", "Nginx"],
     featured: true,
     metrics: [
-      { label: "Features", value: "All-in-One" },
-      { label: "Users", value: "Students" },
+      { label: "Hosting Cost", value: "Minimal" },
+      { label: "Infrastructure", value: "Self-Hosted" },
     ],
   },
 ];
