@@ -16,20 +16,33 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pratikdesai.dev"),
-  title: "Pratik Desai | Senior Software Engineer",
+  title: {
+    default: "Pratik Desai | Senior Software Engineer - Fintech & Payments Expert",
+    template: "%s | Pratik Desai",
+  },
   description:
-    "Senior Software Engineer specializing in Fintech, Payments, and Cybersecurity. 7+ years building scalable distributed systems at Securonix, Mastercard, and startups.",
+    "Senior Software Engineer with 7+ years experience in Fintech, Payments, and Cybersecurity. Built systems at Securonix, Mastercard, TartanHq processing millions of transactions. Java, Spring Boot, Kafka, AWS expert based in Pune, India.",
   keywords: [
     "Pratik Desai",
     "Software Engineer",
+    "Senior Software Engineer",
     "Backend Developer",
     "Java Developer",
-    "Spring Boot",
-    "Fintech",
-    "Payments",
-    "Cybersecurity",
+    "Spring Boot Developer",
+    "Fintech Engineer",
+    "Payments Engineer",
+    "Cybersecurity Engineer",
+    "Kafka Developer",
+    "AWS Developer",
+    "Microservices",
+    "Distributed Systems",
     "Pune",
     "India",
+    "Mastercard",
+    "Securonix",
+    "TartanHq",
+    "Hire Java Developer",
+    "Hire Backend Developer",
   ],
   authors: [{ name: "Pratik Desai" }],
   creator: "Pratik Desai",
@@ -70,6 +83,54 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pratik Desai",
+  url: "https://pratikdesai.dev",
+  image: "https://pratikdesai.dev/pratik-photo.jpg",
+  jobTitle: "Senior Software Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Securonix",
+  },
+  description:
+    "Senior Software Engineer with 7+ years experience specializing in Fintech, Payments, and Cybersecurity.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Pune",
+    addressCountry: "India",
+  },
+  email: "pratikvilasdesai@gmail.com",
+  sameAs: [
+    "https://www.linkedin.com/in/pratikvdesai/",
+    "https://github.com/pratikdesai74",
+    "https://leetcode.com/u/pratikvilasdesai/",
+    "https://medium.com/@pratikvilasdesai",
+  ],
+  knowsAbout: [
+    "Java",
+    "Spring Boot",
+    "Apache Kafka",
+    "AWS",
+    "Microservices",
+    "Distributed Systems",
+    "Fintech",
+    "Payment Systems",
+    "Cybersecurity",
+  ],
+  alumniOf: [
+    {
+      "@type": "EducationalOrganization",
+      name: "CDAC ACTS Pune",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Shivaji University",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -77,6 +138,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0a0a0f] text-[#f4f4f5]`}
       >
