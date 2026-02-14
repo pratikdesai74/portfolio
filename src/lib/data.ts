@@ -5,11 +5,13 @@ export const personalInfo = {
   location: "Pune, India",
   email: "pratikvilasdesai@gmail.com",
   phone: "+91-7588113838",
-  about: `From engineering graduate to scaling payment systems processing millions of transactions - my journey has been anything but conventional. I thrive at the intersection of complex technical challenges and business impact.
+  about: `From Mechanical Engineering to scaling payment systems processing millions of transactions - my journey has been anything but conventional. I thrive at the intersection of complex technical challenges and business impact.
 
 Over 7+ years, I've evolved from a curious engineer to a founding team member at a startup, and now to building enterprise-grade security platforms. At TartanHq, I was there from day zero - turning ideas into a revenue-generating platform in just 3 months. At Mastercard, I architected solutions reaching 10M+ users across Africa.
 
-Today at Securonix, I'm scaling SIEM infrastructure from 1M to 2M+ transactions per second. What drives me? The challenge of building systems that are not just technically elegant but create real business value.`,
+Today at Securonix, I'm scaling SIEM infrastructure from 1M to 2M+ transactions per second. What drives me? The challenge of building systems that are not just technically elegant but create real business value.
+
+Beyond code, I'm a National Level Taekwondo player who has won multiple gold medals and represented Maharashtra State. Music is my other passion - as a guitarist and vocalist, I've been part of an indie-rock band performing at venues like Hard Rock Cafe and Blue Frog. Whether it's sports, music, or software - I love finding new ideas and turning them into reality from scratch.`,
   social: {
     linkedin: "https://www.linkedin.com/in/pratikvdesai/",
     github: "https://github.com/pratikdesai74",

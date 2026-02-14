@@ -21,6 +21,7 @@ const COMMANDS: Record<string, string | ReactNode> = {
   exp        - Work experience summary
   education  - Educational background
   awards     - Awards and achievements
+  hobbies    - Beyond code - sports & music
   social     - Social media links
   resume     - Download resume
   clear      - Clear terminal
@@ -36,10 +37,14 @@ const COMMANDS: Record<string, string | ReactNode> = {
 │  7+ years crafting scalable systems in Fintech, Payments,   │
 │  and Cybersecurity domains.                                 │
 │                                                             │
-│  🎯 Engineering graduate turned Tech Leader                 │
+│  🎯 Mechanical Engineering to Tech - unconventional journey │
 │  🚀 Built systems processing millions of transactions       │
 │  💡 Founding engineer who scaled startups to $66K/mo        │
 │  🛡️  Currently securing enterprises at Securonix            │
+│                                                             │
+│  🥋 National Level Taekwondo Player - Multiple Gold Medals  │
+│  🎸 Indie-Rock Band - Guitarist at Hard Rock, Blue Frog     │
+│  💡 Product builder at heart - love creating from scratch   │
 │                                                             │
 │  Philosophy: "Write code that tells a story"                │
 │                                                             │
@@ -50,8 +55,9 @@ const COMMANDS: Record<string, string | ReactNode> = {
 ║                    CAREER JOURNEY                            ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║  2014 ─── 🎓 Engineering Graduate                            ║
-║           └── BE/B.Tech from Shivaji University              ║
+║  2014 ─── 🎓 Mechanical Engineering Graduate                 ║
+║           └── B.Tech from Shivaji University                 ║
+║           └── Non-tech to tech journey begins!               ║
 ║                                                              ║
 ║  2019 ─── 💻 CDAC ACTS Pune                                  ║
 ║           └── PG Diploma - Pivoted to software               ║
@@ -200,6 +206,30 @@ const COMMANDS: Record<string, string | ReactNode> = {
 ║  📈 10M+ Users Impacted                                      ║
 ║     └─ Africa expansion at Mastercard                       ║
 ║     └─ Enterprise scale across all roles                    ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝`,
+
+  hobbies: `
+╔══════════════════════════════════════════════════════════════╗
+║                    BEYOND CODE                               ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  🥋 NATIONAL LEVEL TAEKWONDO                                 ║
+║     └─ Multiple Gold Medal Winner                           ║
+║     └─ Represented Maharashtra State                        ║
+║     └─ Discipline & Focus from martial arts                 ║
+║                                                              ║
+║  🎸 INDIE-ROCK BAND MEMBER                                   ║
+║     └─ Guitarist & Vocalist                                 ║
+║     └─ Performed at Hard Rock Cafe, Blue Frog               ║
+║     └─ Intercollege competitions & live gigs                ║
+║                                                              ║
+║  💡 PRODUCT MINDSET                                          ║
+║     └─ Always finding new ideas to build                    ║
+║     └─ Love turning concepts into products                  ║
+║     └─ From 0 to 1 is where the magic happens               ║
+║                                                              ║
+║  "Same energy whether debugging code or shredding guitar"   ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝`,
 

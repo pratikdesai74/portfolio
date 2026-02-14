@@ -3,14 +3,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { MapPin, Award, TrendingUp } from "lucide-react";
+import { MapPin, Award, TrendingUp, Medal, Guitar, Lightbulb } from "lucide-react";
 import { personalInfo, stats } from "@/lib/data";
 
 const journeyMilestones = [
   {
     year: "2014",
-    title: "Engineering Graduate",
-    description: "B.Tech from Shivaji University - Where the journey began",
+    title: "Mechanical Engineering Graduate",
+    description: "B.Tech from Shivaji University - Non-tech to tech journey began",
   },
   {
     year: "2019",
@@ -61,7 +61,7 @@ export function About() {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-[#a1a1aa] max-w-2xl mx-auto">
-            From engineering graduate to scaling distributed systems - my
+            From Mechanical Engineering to scaling distributed systems - my
             unconventional path in tech.
           </p>
         </motion.div>
@@ -132,6 +132,34 @@ export function About() {
               <div className="flex items-center gap-2 text-[#a1a1aa]">
                 <Award className="w-4 h-4 text-[#3b82f6]" />
                 <span>IBS Intelligence Award Winner</span>
+              </div>
+            </div>
+
+            {/* Beyond Code - Interests */}
+            <div className="mt-8 p-4 rounded-xl bg-[#12121a] border border-[#1e1e2e]">
+              <h4 className="text-sm font-semibold text-white mb-3">Beyond Code</h4>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <Medal className="w-5 h-5 text-[#f59e0b] mt-0.5 shrink-0" />
+                  <div>
+                    <span className="text-[#f4f4f5] text-sm font-medium">National Level Taekwondo Player</span>
+                    <p className="text-[#71717a] text-xs mt-0.5">Multiple Gold Medals | Represented Maharashtra State</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Guitar className="w-5 h-5 text-[#8b5cf6] mt-0.5 shrink-0" />
+                  <div>
+                    <span className="text-[#f4f4f5] text-sm font-medium">Indie-Rock Band Member</span>
+                    <p className="text-[#71717a] text-xs mt-0.5">Guitarist & Vocalist | Performed at Hard Rock Cafe, Blue Frog</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Lightbulb className="w-5 h-5 text-[#22c55e] mt-0.5 shrink-0" />
+                  <div>
+                    <span className="text-[#f4f4f5] text-sm font-medium">Product Builder at Heart</span>
+                    <p className="text-[#71717a] text-xs mt-0.5">Love turning ideas into reality from scratch</p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

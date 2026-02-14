@@ -12,8 +12,8 @@ interface Star {
 }
 
 const milestones = [
-  { range: [0, 16], label: "Engineering Graduate", year: "2014", company: "Shivaji University" },
-  { range: [16, 32], label: "PG Diploma", year: "2019", company: "CDAC ACTS Pune" },
+  { range: [0, 16], label: "Mechanical Engineering", year: "2014", company: "Shivaji University" },
+  { range: [16, 32], label: "Tech Transition", year: "2019", company: "CDAC ACTS Pune" },
   { range: [32, 48], label: "First Tech Role", year: "2019-2021", company: "Volante Technologies" },
   { range: [48, 64], label: "Founding Engineer", year: "2021-2024", company: "TartanHq" },
   { range: [64, 82], label: "Product Engineer", year: "2024-2025", company: "Mastercard" },
