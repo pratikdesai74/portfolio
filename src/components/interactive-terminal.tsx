@@ -36,9 +36,9 @@ const COMMANDS: Record<string, string | ReactNode> = {
 │  7+ years crafting scalable systems in Fintech, Payments,   │
 │  and Cybersecurity domains.                                 │
 │                                                             │
-│  🎯 From Mechanical Engineering to Tech Leadership          │
+│  🎯 Engineering graduate turned Tech Leader                 │
 │  🚀 Built systems processing millions of transactions       │
-│  💡 Founding engineer who scaled startups                   │
+│  💡 Founding engineer who scaled startups to $66K/mo        │
 │  🛡️  Currently securing enterprises at Securonix            │
 │                                                             │
 │  Philosophy: "Write code that tells a story"                │
@@ -50,23 +50,23 @@ const COMMANDS: Record<string, string | ReactNode> = {
 ║                    CAREER JOURNEY                            ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║  2015 ─── 🎓 Mechanical Engineering Graduate                 ║
-║           └── Started from non-tech background               ║
+║  2014 ─── 🎓 Engineering Graduate                            ║
+║           └── BE/B.Tech from Shivaji University              ║
 ║                                                              ║
-║  2017 ─── 💻 CDAC ACTS Pune                                  ║
-║           └── Pivoted to software engineering                ║
+║  2019 ─── 💻 CDAC ACTS Pune                                  ║
+║           └── PG Diploma - Pivoted to software               ║
 ║                                                              ║
-║  2018 ─── 🏆 Volante Technologies (IBS Award Winner)         ║
-║           └── First tech role, payment systems               ║
+║  2019-21 ── 🏆 Volante Technologies                          ║
+║           └── IBS Award Winner, payment systems              ║
 ║                                                              ║
-║  2019 ─── 🚀 TartanHq (Founding Engineer)                    ║
+║  2021-24 ── 🚀 TartanHq (Founding Engineer)                  ║
 ║           └── Built platform generating $66K/mo revenue      ║
 ║                                                              ║
-║  2021 ─── 💳 Mastercard                                      ║
-║           └── Enterprise scale, global payments              ║
+║  2024-25 ── 💳 Mastercard (Product Engineer)                 ║
+║           └── Africa expansion, 10M+ users target            ║
 ║                                                              ║
-║  2023 ─── 🛡️  Securonix (Current)                            ║
-║           └── Cybersecurity & UEBA platform                  ║
+║  2026 ─── 🛡️  Securonix (Current)                            ║
+║           └── Senior Engineer, SIEM 1M to 2M+ TPS            ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
@@ -75,21 +75,24 @@ const COMMANDS: Record<string, string | ReactNode> = {
 │                    TECHNICAL ARSENAL                         │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│  LANGUAGES      │ Java ████████████ 95%                      │
-│                 │ Python ██████████ 85%                      │
-│                 │ TypeScript █████████ 80%                   │
-│                 │ SQL ████████████ 90%                       │
+│  LANGUAGES      │ Java ████████████ Expert                   │
+│                 │ Python ██████████ Advanced                 │
+│                 │ Bash/Shell █████████ Advanced              │
+│                 │ SQL ████████████ Expert                    │
 │                                                              │
-│  BACKEND        │ Spring Boot, Kafka, Redis, gRPC            │
-│                 │ Microservices, REST APIs                   │
+│  BACKEND        │ Spring Boot, Spring Security, Hibernate    │
+│                 │ Microservices, REST APIs, gRPC, JUnit      │
 │                                                              │
-│  CLOUD          │ AWS (ECS, Lambda, S3, SQS)                 │
-│                 │ GCP, Kubernetes, Docker                    │
+│  MESSAGING      │ Apache Kafka, Nats.io, AWS SQS             │
+│                 │ Event-Driven Architecture (EDA)            │
 │                                                              │
-│  DATABASES      │ PostgreSQL, MySQL, MongoDB, Redis          │
+│  CLOUD/DEVOPS   │ AWS (S3, SQS, EKS, Lambda)                 │
+│                 │ GCP, Docker, Kubernetes, Jenkins, CI/CD    │
 │                                                              │
-│  SPECIALTIES    │ Payment Systems, High-Throughput,          │
-│                 │ Distributed Systems, Security              │
+│  DATABASES      │ PostgreSQL, MySQL, Redis, DynamoDB         │
+│                 │ HBase, SQL Server, Solr                    │
+│                                                              │
+│  BIG DATA       │ Apache Spark, Hadoop (HDFS), HBase         │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘`,
 
@@ -141,21 +144,25 @@ const COMMANDS: Record<string, string | ReactNode> = {
 │                   WORK EXPERIENCE                            │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│  SECURONIX (2023 - Present)                                  │
+│  SECURONIX (Jan 2026 - Present)                              │
 │  Senior Software Engineer                                    │
-│  └─ Cybersecurity platform serving 1000+ enterprises        │
+│  └─ Scaling SIEM platform from 1M to 2M+ TPS                │
+│  └─ Cybersecurity | UEBA Platform                           │
 │                                                              │
-│  MASTERCARD (2021 - 2023)                                    │
-│  Software Engineer                                           │
-│  └─ Payment gateway processing 10M+ daily transactions       │
+│  MASTERCARD (Mar 2024 - Dec 2025)                            │
+│  Product Engineer                                            │
+│  └─ Africa contactless payment, 10M+ users target           │
+│  └─ Multi-region resiliency, 5+ clients onboarded           │
 │                                                              │
-│  TARTANHQ (2019 - 2021)                                      │
-│  Founding Engineer                                           │
-│  └─ Built MVP to $66K/mo revenue, 50+ enterprise clients     │
+│  TARTANHQ (Jul 2021 - Mar 2024)                              │
+│  Founding Software Engineer                                  │
+│  └─ Day 0 role, built Perks platform from scratch           │
+│  └─ $66K/mo revenue, 30K users onboarded                    │
 │                                                              │
-│  VOLANTE TECHNOLOGIES (2018 - 2019)                          │
-│  Software Engineer                                           │
-│  └─ Payment processing, IBS Fintech Award Winner             │
+│  VOLANTE TECHNOLOGIES (Feb 2019 - Jul 2021)                  │
+│  Software Engineer (Backend)                                 │
+│  └─ VolPay - IBS Intelligence Award Winner                  │
+│  └─ Payment infrastructure for Goldman Sachs                │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘`,
 
@@ -164,18 +171,16 @@ const COMMANDS: Record<string, string | ReactNode> = {
 │                      EDUCATION                               │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│  🎓 CDAC ACTS, Pune (2017)                                   │
-│     PG Diploma in Advanced Computing                         │
-│     └─ Software Development specialization                   │
+│  🎓 Scaler (2022)                                            │
+│     Software Development & Problem Solving                   │
 │                                                              │
-│  🎓 Shivaji University (2015)                                │
-│     Bachelor of Engineering - Mechanical                     │
-│     └─ Foundation in problem-solving & analytics             │
+│  🎓 CDAC ACTS, Pune (2019)                                   │
+│     Post Graduate Diploma                                    │
+│     └─ Advanced Computing                                    │
 │                                                              │
-│  📜 CERTIFICATIONS                                           │
-│     • AWS Solutions Architect                                │
-│     • Apache Kafka Fundamentals                              │
-│     • Spring Professional                                    │
+│  🎓 Shivaji University, Kolhapur (2014)                      │
+│     BE/B.Tech/BS                                             │
+│     └─ Foundation in engineering & problem-solving           │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘`,
 
@@ -184,17 +189,17 @@ const COMMANDS: Record<string, string | ReactNode> = {
 ║                  AWARDS & RECOGNITION                        ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║  🏆 IBS Fintech Innovation Award (2018)                      ║
-║     └─ For contribution to payment processing system         ║
+║  🏆 IBS Intelligence Award                                   ║
+║     └─ For VolPay product development for Goldman Sachs     ║
+║     └─ Recognized as top payment platform                   ║
 ║                                                              ║
-║  ⭐ Employee of the Quarter - TartanHq (2020)                ║
-║     └─ Building core platform architecture                   ║
-║                                                              ║
-║  🎯 Hackathon Winner - Mastercard (2022)                     ║
-║     └─ Real-time fraud detection solution                    ║
+║  🚀 Founding Engineer Impact - TartanHq                      ║
+║     └─ Built platform from 0 to $66K/mo revenue             ║
+║     └─ Onboarded 30,000 concurrent users                    ║
 ║                                                              ║
 ║  📈 10M+ Users Impacted                                      ║
-║     └─ Across platforms built throughout career              ║
+║     └─ Africa expansion at Mastercard                       ║
+║     └─ Enterprise scale across all roles                    ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝`,
 

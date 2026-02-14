@@ -5,7 +5,7 @@ export const personalInfo = {
   location: "Pune, India",
   email: "pratikvilasdesai@gmail.com",
   phone: "+91-7588113838",
-  about: `From mechanical engineering to scaling payment systems processing millions of transactions - my journey has been anything but conventional. I thrive at the intersection of complex technical challenges and business impact.
+  about: `From engineering graduate to scaling payment systems processing millions of transactions - my journey has been anything but conventional. I thrive at the intersection of complex technical challenges and business impact.
 
 Over 7+ years, I've evolved from a curious engineer to a founding team member at a startup, and now to building enterprise-grade security platforms. At TartanHq, I was there from day zero - turning ideas into a revenue-generating platform in just 3 months. At Mastercard, I architected solutions reaching 10M+ users across Africa.
 

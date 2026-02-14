@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 interface Star {
   x: number;
@@ -11,26 +11,33 @@ interface Star {
   speed: number;
 }
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  life: number;
-  maxLife: number;
-}
+const milestones = [
+  { range: [0, 16], label: "Engineering Graduate", year: "2014", company: "Shivaji University" },
+  { range: [16, 32], label: "PG Diploma", year: "2019", company: "CDAC ACTS Pune" },
+  { range: [32, 48], label: "First Tech Role", year: "2019-2021", company: "Volante Technologies" },
+  { range: [48, 64], label: "Founding Engineer", year: "2021-2024", company: "TartanHq" },
+  { range: [64, 82], label: "Product Engineer", year: "2024-2025", company: "Mastercard" },
+  { range: [82, 100], label: "Senior Engineer", year: "2026-Present", company: "Securonix" },
+];
 
 export default function SpaceBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const starsRef = useRef<Star[]>([]);
-  const particlesRef = useRef<Particle[]>([]);
-  const rocketYRef = useRef(0);
   const animationRef = useRef<number | null>(null);
+  const [scrollPercent, setScrollPercent] = useState(0);
 
   const { scrollYProgress } = useScroll();
-  const rocketProgress = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  const rocketY = useTransform(smoothProgress, [0, 1], ["90%", "10%"]);
+
+  // Track scroll percentage for milestone display
+  useEffect(() => {
+    const unsubscribe = smoothProgress.on("change", (value) => {
+      setScrollPercent(value * 100);
+    });
+    return unsubscribe;
+  }, [smoothProgress]);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -49,7 +56,7 @@ export default function SpaceBackground() {
     if (dimensions.width === 0) return;
 
     // Initialize stars
-    const starCount = Math.floor((dimensions.width * dimensions.height) / 3000);
+    const starCount = Math.floor((dimensions.width * dimensions.height) / 4000);
     starsRef.current = Array.from({ length: starCount }, () => ({
       x: Math.random() * dimensions.width,
       y: Math.random() * dimensions.height,
@@ -79,17 +86,8 @@ export default function SpaceBackground() {
 
       ctx.clearRect(0, 0, dimensions.width, dimensions.height);
 
-      // Draw gradient background
-      const gradient = ctx.createLinearGradient(0, 0, 0, dimensions.height);
-      gradient.addColorStop(0, "#0a0a0f");
-      gradient.addColorStop(0.5, "#0d0d15");
-      gradient.addColorStop(1, "#0a0a0f");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, dimensions.width, dimensions.height);
-
       // Draw and update stars
       starsRef.current.forEach((star) => {
-        // Twinkling effect
         const twinkle = Math.sin(currentTime * 0.001 * star.speed + star.x) * 0.3 + 0.7;
 
         ctx.beginPath();
@@ -97,15 +95,15 @@ export default function SpaceBackground() {
         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * twinkle})`;
         ctx.fill();
 
-        // Move stars down (parallax effect with scroll)
-        star.y += star.speed * 0.5;
+        // Slow parallax movement
+        star.y += star.speed * 0.3;
         if (star.y > dimensions.height) {
           star.y = -star.size;
           star.x = Math.random() * dimensions.width;
         }
       });
 
-      // Draw nebula/galaxy clouds
+      // Draw nebula clouds
       const nebulaGradient1 = ctx.createRadialGradient(
         dimensions.width * 0.2,
         dimensions.height * 0.3,
@@ -114,52 +112,23 @@ export default function SpaceBackground() {
         dimensions.height * 0.3,
         300
       );
-      nebulaGradient1.addColorStop(0, "rgba(59, 130, 246, 0.05)");
-      nebulaGradient1.addColorStop(0.5, "rgba(139, 92, 246, 0.03)");
+      nebulaGradient1.addColorStop(0, "rgba(59, 130, 246, 0.03)");
       nebulaGradient1.addColorStop(1, "transparent");
       ctx.fillStyle = nebulaGradient1;
       ctx.fillRect(0, 0, dimensions.width, dimensions.height);
 
       const nebulaGradient2 = ctx.createRadialGradient(
         dimensions.width * 0.8,
-        dimensions.height * 0.6,
+        dimensions.height * 0.7,
         0,
         dimensions.width * 0.8,
-        dimensions.height * 0.6,
-        400
+        dimensions.height * 0.7,
+        350
       );
-      nebulaGradient2.addColorStop(0, "rgba(139, 92, 246, 0.04)");
-      nebulaGradient2.addColorStop(0.5, "rgba(59, 130, 246, 0.02)");
+      nebulaGradient2.addColorStop(0, "rgba(139, 92, 246, 0.03)");
       nebulaGradient2.addColorStop(1, "transparent");
       ctx.fillStyle = nebulaGradient2;
       ctx.fillRect(0, 0, dimensions.width, dimensions.height);
-
-      // Update and draw particles (rocket exhaust)
-      particlesRef.current = particlesRef.current.filter((p) => p.life > 0);
-      particlesRef.current.forEach((particle) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        particle.life -= 1;
-        particle.vy += 0.1; // Gravity
-
-        const alpha = particle.life / particle.maxLife;
-        const gradient = ctx.createRadialGradient(
-          particle.x,
-          particle.y,
-          0,
-          particle.x,
-          particle.y,
-          particle.size
-        );
-        gradient.addColorStop(0, `rgba(255, 150, 50, ${alpha * 0.8})`);
-        gradient.addColorStop(0.5, `rgba(255, 100, 50, ${alpha * 0.4})`);
-        gradient.addColorStop(1, `rgba(255, 50, 50, 0)`);
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-      });
     };
 
     animationRef.current = requestAnimationFrame(animate);
@@ -171,34 +140,13 @@ export default function SpaceBackground() {
     };
   }, [dimensions]);
 
-  // Listen to rocket progress for particle emission
-  useEffect(() => {
-    const unsubscribe = rocketProgress.on("change", (value) => {
-      rocketYRef.current = value;
-
-      // Emit particles from rocket position
-      const rocketX = 60;
-      const rocketY = dimensions.height - (value / 100) * dimensions.height;
-
-      if (Math.random() > 0.5) {
-        particlesRef.current.push({
-          x: rocketX + Math.random() * 10 - 5,
-          y: rocketY + 40,
-          vx: (Math.random() - 0.5) * 2,
-          vy: Math.random() * 3 + 1,
-          size: Math.random() * 8 + 4,
-          life: 30,
-          maxLife: 30,
-        });
-      }
-    });
-
-    return unsubscribe;
-  }, [rocketProgress, dimensions.height]);
+  const currentMilestone = milestones.find(
+    (m) => scrollPercent >= m.range[0] && scrollPercent < m.range[1]
+  ) || milestones[0];
 
   return (
     <>
-      {/* Canvas for stars and particles */}
+      {/* Canvas for stars */}
       <canvas
         ref={canvasRef}
         width={dimensions.width}
@@ -206,32 +154,34 @@ export default function SpaceBackground() {
         className="fixed inset-0 z-0 pointer-events-none"
       />
 
+      {/* Journey progress line */}
+      <div className="fixed left-10 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/20 to-transparent z-0 pointer-events-none hidden lg:block" />
+
       {/* Rocket that follows scroll */}
       <motion.div
-        className="fixed left-8 z-10 pointer-events-none"
-        style={{
-          bottom: rocketProgress,
-        }}
+        className="fixed left-6 z-20 pointer-events-none hidden lg:block"
+        style={{ top: rocketY }}
       >
         <motion.div
           animate={{
-            x: [0, 3, -3, 0],
-            rotate: [0, 2, -2, 0],
+            x: [0, 2, -2, 0],
+            rotate: [0, 1, -1, 0],
           }}
           transition={{
-            duration: 0.5,
+            duration: 0.4,
             repeat: Infinity,
             repeatType: "reverse",
           }}
+          className="relative"
         >
           {/* Rocket SVG */}
           <svg
-            width="40"
-            height="60"
+            width="36"
+            height="54"
             viewBox="0 0 40 60"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+            className="drop-shadow-[0_0_12px_rgba(59,130,246,0.6)]"
           >
             {/* Rocket body */}
             <path
@@ -242,7 +192,7 @@ export default function SpaceBackground() {
             />
             {/* Window */}
             <circle cx="20" cy="25" r="6" fill="#0a0a0f" stroke="#60a5fa" strokeWidth="1" />
-            <circle cx="20" cy="25" r="4" fill="#3b82f6" opacity="0.5" />
+            <circle cx="20" cy="25" r="4" fill="#3b82f6" opacity="0.6" />
             {/* Fins */}
             <path d="M8 35L0 50L8 45V35Z" fill="#8b5cf6" />
             <path d="M32 35L40 50L32 45V35Z" fill="#8b5cf6" />
@@ -259,36 +209,35 @@ export default function SpaceBackground() {
 
           {/* Rocket exhaust flame */}
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 top-full"
+            className="absolute left-1/2 -translate-x-1/2 top-[52px]"
             animate={{
-              scaleY: [1, 1.3, 0.8, 1],
-              opacity: [0.8, 1, 0.6, 0.8],
+              scaleY: [1, 1.4, 0.9, 1],
+              opacity: [0.9, 1, 0.7, 0.9],
             }}
             transition={{
-              duration: 0.15,
+              duration: 0.12,
               repeat: Infinity,
             }}
           >
-            <svg width="20" height="30" viewBox="0 0 20 30" fill="none">
+            <svg width="20" height="28" viewBox="0 0 20 30" fill="none">
               <ellipse
                 cx="10"
                 cy="5"
-                rx="5"
-                ry="10"
+                rx="6"
+                ry="12"
                 fill="url(#flameGradient)"
-                filter="blur(2px)"
               />
-              <ellipse cx="10" cy="8" rx="3" ry="15" fill="url(#flameInner)" />
+              <ellipse cx="10" cy="6" rx="3" ry="14" fill="url(#flameInner)" />
               <defs>
-                <linearGradient id="flameGradient" x1="10" y1="0" x2="10" y2="30" gradientUnits="userSpaceOnUse">
+                <linearGradient id="flameGradient" x1="10" y1="0" x2="10" y2="28" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#fbbf24" />
-                  <stop offset="0.5" stopColor="#f97316" />
+                  <stop offset="0.4" stopColor="#f97316" />
                   <stop offset="1" stopColor="#ef4444" stopOpacity="0" />
                 </linearGradient>
-                <linearGradient id="flameInner" x1="10" y1="0" x2="10" y2="25" gradientUnits="userSpaceOnUse">
+                <linearGradient id="flameInner" x1="10" y1="0" x2="10" y2="22" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#fef3c7" />
                   <stop offset="0.3" stopColor="#fbbf24" />
-                  <stop offset="0.7" stopColor="#f97316" />
+                  <stop offset="0.6" stopColor="#f97316" />
                   <stop offset="1" stopColor="#dc2626" stopOpacity="0" />
                 </linearGradient>
               </defs>
@@ -296,47 +245,20 @@ export default function SpaceBackground() {
           </motion.div>
         </motion.div>
 
-        {/* Journey milestones indicator */}
+        {/* Journey milestone indicator */}
         <motion.div
-          className="absolute left-14 top-1/2 -translate-y-1/2 whitespace-nowrap"
+          key={currentMilestone.label}
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
+          className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap"
         >
-          <JourneyMilestone progress={rocketYRef.current} />
+          <div className="bg-[#12121a]/90 backdrop-blur-sm border border-blue-500/30 rounded-lg px-3 py-2 shadow-lg">
+            <p className="text-blue-400 text-xs font-mono">{currentMilestone.year}</p>
+            <p className="text-white text-sm font-semibold">{currentMilestone.label}</p>
+            <p className="text-zinc-500 text-xs">{currentMilestone.company}</p>
+          </div>
         </motion.div>
       </motion.div>
-
-      {/* Journey progress line */}
-      <div className="fixed left-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/20 to-transparent z-0 pointer-events-none" />
     </>
-  );
-}
-
-function JourneyMilestone({ progress }: { progress: number }) {
-  const milestones = [
-    { range: [0, 15], label: "Starting Point", year: "2015" },
-    { range: [15, 30], label: "CDAC Transition", year: "2017" },
-    { range: [30, 45], label: "First Tech Role", year: "2018" },
-    { range: [45, 60], label: "Startup Journey", year: "2019" },
-    { range: [60, 80], label: "Enterprise Scale", year: "2021" },
-    { range: [80, 100], label: "Current Chapter", year: "2023" },
-  ];
-
-  const current = milestones.find(
-    (m) => progress >= m.range[0] && progress < m.range[1]
-  );
-
-  if (!current) return null;
-
-  return (
-    <motion.div
-      key={current.label}
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      className="bg-[#12121a]/80 backdrop-blur-sm border border-blue-500/30 rounded-lg px-3 py-2"
-    >
-      <p className="text-blue-400 text-xs font-mono">{current.year}</p>
-      <p className="text-white text-sm font-medium">{current.label}</p>
-    </motion.div>
   );
 }
