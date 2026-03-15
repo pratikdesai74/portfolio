@@ -1,15 +1,21 @@
 export const personalInfo = {
   name: "Pratik Desai",
-  title: "Senior Software Engineer",
-  tagline: "Building scalable systems at the intersection of Fintech, Payments & Cybersecurity",
+  title: "Founding Senior Backend Engineer",
+  tagline: "Designing distributed systems & event-driven platforms | Building AI-powered tools with RAG & LLM APIs",
   location: "Pune, India",
   email: "pratikvilasdesai@gmail.com",
   phone: "+91-7588113838",
-  about: `From Mechanical Engineering to scaling payment systems processing millions of transactions - my journey has been anything but conventional. I thrive at the intersection of complex technical challenges and business impact.
+  about: `From designing mechanical systems to architecting payment platforms serving millions of users, my unconventional journey into software engineering has shaped how I approach building resilient and scalable systems.
 
-Over 7+ years, I've evolved from a curious engineer to a founding team member at a startup, and now to building enterprise-grade security platforms. At TartanHq, I was there from day zero - turning ideas into a revenue-generating platform in just 3 months. At Mastercard, I architected solutions reaching 10M+ users across Africa.
+I started my career as a Mechanical Engineer working on piping design and stress simulations. While using C/C++ for simulation tooling, I discovered my interest in software engineering. What began as weekend experiments building small applications soon became a full transition into backend development.
 
-Today at Securonix, I'm scaling SIEM infrastructure from 1M to 2M+ transactions per second. What drives me? The challenge of building systems that are not just technically elegant but create real business value.
+I prepared intensively, secured All India Rank 34 in the C-DAC entrance exam, and completed my PG Diploma in Advanced Computing from C-DAC ACTS Pune, which launched my career in software engineering.
+
+My journey in fintech began at Volante Technologies, where I worked on enterprise payment infrastructure contributing to the VolPay platform, recognized by the IBS Intelligence Awards and used by financial institutions such as Goldman Sachs.
+
+I later joined TartanHQ as a Founding Software Engineer, working directly with the CEO and CTO to build products from day zero. I helped build the Perks employee benefits platform, onboarded 30K+ concurrent users generating $66K/month revenue, and designed distributed systems and integrations across multiple providers.
+
+Today I focus on designing high-scale backend systems and event-driven platforms handling large volumes of data and financial transactions. Recently, I've also been working on AI-powered developer tooling and production support agents using RAG pipelines and LLM APIs.
 
 Beyond code, I'm a National Level Taekwondo player who has won multiple gold medals and represented Maharashtra State. Music is my other passion - as a guitarist and vocalist, I've been part of an indie-rock band performing at venues like Hard Rock Cafe and Blue Frog. Whether it's sports, music, or software - I love finding new ideas and turning them into reality from scratch.`,
   social: {

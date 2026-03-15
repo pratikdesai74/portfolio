@@ -61,8 +61,7 @@ export function About() {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-[#a1a1aa] max-w-2xl mx-auto">
-            From Mechanical Engineering to scaling distributed systems - my
-            unconventional path in tech.
+            From Mechanical Engineering to architecting payment platforms & AI-powered systems — my unconventional path in tech.
           </p>
         </motion.div>
 

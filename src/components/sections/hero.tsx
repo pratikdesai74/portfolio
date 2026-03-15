@@ -85,7 +85,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-3 mb-10"
         >
-          {["Fintech", "Payments", "Cybersecurity", "Distributed Systems"].map(
+          {["Distributed Systems", "Event-Driven Architecture", "AI / RAG Pipelines", "Payments & Fintech"].map(
             (tag, index) => (
               <span
                 key={tag}
