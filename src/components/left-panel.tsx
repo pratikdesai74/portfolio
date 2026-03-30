@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Download, Mail } from "lucide-react";
 import { personalInfo, navItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { StreamingText } from "@/components/streaming-text";
+import { RAGPipeline } from "@/components/rag-pipeline";
 
 export function LeftPanel() {
   const [activeSection, setActiveSection] = useState("about");
@@ -74,8 +76,11 @@ export function LeftPanel() {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="text-[#64748b] leading-relaxed max-w-xs text-sm"
         >
-          Building high-scale event-driven platforms and AI-powered developer tools.
-          Java · Spring Boot · Kafka at the core.
+          <StreamingText
+            text="Building high-scale event-driven platforms and AI-powered developer tools. Java · Spring Boot · Kafka at the core."
+            speed={22}
+            delay={800}
+          />
         </motion.p>
 
         {/* Availability */}
@@ -90,6 +95,16 @@ export function LeftPanel() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22c55e]" />
           </span>
           <span className="text-xs font-mono text-[#22c55e]">Open to opportunities</span>
+        </motion.div>
+
+        {/* RAG Pipeline visualization */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 1.2 }}
+          className="mt-6"
+        >
+          <RAGPipeline />
         </motion.div>
       </div>
 

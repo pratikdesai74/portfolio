@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { MapPin, Award, TrendingUp, Medal, Guitar, Lightbulb } from "lucide-react";
 import { personalInfo, stats } from "@/lib/data";
+import { AgentTrace } from "@/components/agent-trace";
 
 const journeyMilestones = [
   {
@@ -172,7 +173,7 @@ export function About() {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4, delay: 0.75 }}
-        className="p-5 rounded-xl bg-[#111827] border border-[#1e293b]"
+        className="p-5 rounded-xl bg-[#111827] border border-[#1e293b] mb-8"
       >
         <h4 className="text-sm font-semibold text-[#e2e8f0] mb-4">Beyond Code</h4>
         <div className="space-y-3">
@@ -198,6 +199,15 @@ export function About() {
             </div>
           </div>
         </div>
+      </motion.div>
+
+      {/* Agent Runtime trace */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.9 }}
+      >
+        <AgentTrace />
       </motion.div>
     </section>
   );
