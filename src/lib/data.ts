@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Pratik Desai",
   title: "Founding Senior Backend Engineer",
-  tagline: "Designing distributed systems & event-driven platforms | Building AI-powered tools with RAG & LLM APIs",
+  tagline: "Building AI-powered Platforms (LLM, RAG & Multi-Agent Architecture) | Platform Engineering | Distributed Systems | Java, Spring Boot, Kafka | Event-Driven Architecture",
   location: "Pune, India",
   email: "pratikvilasdesai@gmail.com",
   phone: "+91-7588113838",

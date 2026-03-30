@@ -10,32 +10,32 @@ const journeyMilestones = [
   {
     year: "2014",
     title: "Mechanical Engineering Graduate",
-    description: "B.Tech from Shivaji University - Non-tech to tech journey began",
+    description: "B.Tech from Shivaji University — non-tech to tech journey begins",
   },
   {
     year: "2019",
-    title: "Tech Transition",
-    description: "CDAC ACTS Pune - Pivoting into software development",
+    title: "Tech Transition · AIR 34",
+    description: "CDAC ACTS Pune — pivoted into software engineering",
   },
   {
-    year: "2019-21",
+    year: "2019–21",
     title: "First Tech Role",
-    description: "Volante Technologies - IBS Intelligence Award for VolPay",
+    description: "Volante Technologies — IBS Intelligence Award for VolPay",
   },
   {
-    year: "2021-24",
-    title: "Startup Builder",
-    description: "TartanHq - Founding engineer, built Perks from day 0",
+    year: "2021–24",
+    title: "Founding Engineer",
+    description: "TartanHQ — built Perks from day zero, 30K+ users, $66K/mo",
   },
   {
-    year: "2024-25",
+    year: "2024–25",
     title: "Enterprise Scale",
-    description: "Mastercard - Architecting solutions for 10M+ users",
+    description: "Mastercard — contactless payments, 10M+ users across Africa",
   },
   {
     year: "2026",
     title: "Present",
-    description: "Securonix - Scaling SIEM platform to 2M+ TPS",
+    description: "Securonix — scaling SIEM platform to 2M+ TPS",
   },
 ];
 
@@ -47,171 +47,158 @@ export function About() {
     <section
       id="about"
       ref={containerRef}
-      className="py-24 md:py-32 px-6"
+      className="py-16 md:py-24 border-b border-[#1e293b]/50"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <p className="text-[#a1a1aa] max-w-2xl mx-auto">
-            From Mechanical Engineering to architecting payment platforms & AI-powered systems — my unconventional path in tech.
-          </p>
-        </motion.div>
+      {/* Section label */}
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4 }}
+        className="font-mono text-[#22d3ee] text-xs tracking-widest uppercase mb-2"
+      >
+        // 01. about
+      </motion.p>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left: Photo + Story */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {/* Profile Photo */}
-            <div className="flex justify-center lg:justify-start mb-8">
-              <div className="relative">
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-[#1e1e2e] relative">
-                  <Image
-                    src="/pratik-photo.jpg"
-                    alt="Pratik Desai"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                {/* Decorative ring */}
-                <div className="absolute inset-0 rounded-full border-2 border-[#3b82f6]/30 scale-110" />
-                {/* Badge */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white text-sm font-medium">
-                  7+ Years
-                </div>
-              </div>
-            </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.05 }}
+        className="text-2xl md:text-3xl font-bold font-display text-[#e2e8f0] mb-8"
+      >
+        About <span className="gradient-text">Me</span>
+      </motion.h2>
 
-            <div className="prose prose-invert max-w-none">
-              {personalInfo.about.split("\n\n").map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-[#a1a1aa] leading-relaxed mb-4 text-lg"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 mt-8">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="p-4 rounded-xl bg-[#12121a] border border-[#1e1e2e]"
-                >
-                  <div className="text-2xl md:text-3xl font-bold gradient-text">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-[#71717a] mt-1">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Quick Info */}
-            <div className="flex flex-wrap gap-4 mt-8">
-              <div className="flex items-center gap-2 text-[#a1a1aa]">
-                <MapPin className="w-4 h-4 text-[#3b82f6]" />
-                <span>{personalInfo.location}</span>
-              </div>
-              <div className="flex items-center gap-2 text-[#a1a1aa]">
-                <Award className="w-4 h-4 text-[#3b82f6]" />
-                <span>IBS Intelligence Award Winner</span>
-              </div>
-            </div>
-
-            {/* Beyond Code - Interests */}
-            <div className="mt-8 p-4 rounded-xl bg-[#12121a] border border-[#1e1e2e]">
-              <h4 className="text-sm font-semibold text-white mb-3">Beyond Code</h4>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <Medal className="w-5 h-5 text-[#f59e0b] mt-0.5 shrink-0" />
-                  <div>
-                    <span className="text-[#f4f4f5] text-sm font-medium">National Level Taekwondo Player</span>
-                    <p className="text-[#71717a] text-xs mt-0.5">Multiple Gold Medals | Represented Maharashtra State</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Guitar className="w-5 h-5 text-[#8b5cf6] mt-0.5 shrink-0" />
-                  <div>
-                    <span className="text-[#f4f4f5] text-sm font-medium">Indie-Rock Band Member</span>
-                    <p className="text-[#71717a] text-xs mt-0.5">Guitarist & Vocalist | Performed at Hard Rock Cafe, Blue Frog</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Lightbulb className="w-5 h-5 text-[#22c55e] mt-0.5 shrink-0" />
-                  <div>
-                    <span className="text-[#f4f4f5] text-sm font-medium">Product Builder at Heart</span>
-                    <p className="text-[#71717a] text-xs mt-0.5">Love turning ideas into reality from scratch</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right: Journey Timeline */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative"
-          >
-            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-[#3b82f6]" />
-              My Journey
-            </h3>
-
-            {/* Timeline */}
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-3 top-0 bottom-0 w-px bg-gradient-to-b from-[#3b82f6] via-[#8b5cf6] to-[#3b82f6]/20" />
-
-              <div className="space-y-6">
-                {journeyMilestones.map((milestone, index) => (
-                  <motion.div
-                    key={milestone.year}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                    className="relative pl-10"
-                  >
-                    {/* Timeline dot */}
-                    <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#0a0a0f] border-2 border-[#3b82f6] flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-[#3b82f6]" />
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-[#12121a] border border-[#1e1e2e] hover:border-[#3b82f6]/30 transition-colors">
-                      <span className="text-xs font-mono text-[#3b82f6]">
-                        {milestone.year}
-                      </span>
-                      <h4 className="font-semibold text-white mt-1">
-                        {milestone.title}
-                      </h4>
-                      <p className="text-sm text-[#71717a] mt-1">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+      {/* Photo + quick info */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="flex items-center gap-5 mb-8"
+      >
+        <div className="relative shrink-0">
+          <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#1e293b] relative">
+            <Image
+              src="/pratik-photo.jpg"
+              alt="Pratik Desai"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 rounded-full border border-[#22d3ee]/20 scale-110" />
         </div>
+        <div className="flex flex-col gap-1.5">
+          <span className="flex items-center gap-1.5 text-sm text-[#94a3b8]">
+            <MapPin className="w-3.5 h-3.5 text-[#22d3ee]" />
+            {personalInfo.location}
+          </span>
+          <span className="flex items-center gap-1.5 text-sm text-[#94a3b8]">
+            <Award className="w-3.5 h-3.5 text-[#22d3ee]" />
+            IBS Intelligence Award Winner
+          </span>
+          <span className="font-mono text-xs text-[#475569]">7+ yrs · distributed systems & AI platforms</span>
+        </div>
+      </motion.div>
+
+      {/* Story */}
+      <div className="space-y-4 mb-10">
+        {personalInfo.about.split("\n\n").map((paragraph, index) => (
+          <motion.p
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, delay: 0.15 + index * 0.04 }}
+            className="text-[#94a3b8] leading-relaxed text-sm"
+          >
+            {paragraph}
+          </motion.p>
+        ))}
       </div>
+
+      {/* Stats bento */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.45 }}
+        className="grid grid-cols-2 gap-3 mb-10"
+      >
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className="p-4 rounded-xl bg-[#111827] border border-[#1e293b] hover:border-[#22d3ee]/20 transition-colors"
+          >
+            <div className="text-2xl font-bold font-display gradient-text">{stat.value}</div>
+            <div className="text-xs text-[#64748b] mt-1">{stat.label}</div>
+          </div>
+        ))}
+      </motion.div>
+
+      {/* Journey timeline */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.55 }}
+        className="mb-10"
+      >
+        <h3 className="flex items-center gap-2 text-sm font-semibold text-[#e2e8f0] mb-5">
+          <TrendingUp className="w-4 h-4 text-[#22d3ee]" />
+          My Journey
+        </h3>
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[#22d3ee] via-[#6366f1] to-[#22d3ee]/10" />
+          <div className="space-y-3 pl-6">
+            {journeyMilestones.map((milestone, index) => (
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, x: 10 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.06 }}
+                className="relative"
+              >
+                <div className="absolute -left-[25px] top-2 w-2 h-2 rounded-full bg-[#0a0f1e] border border-[#22d3ee]" />
+                <div className="p-3.5 rounded-xl bg-[#111827] border border-[#1e293b] hover:border-[#22d3ee]/25 transition-colors">
+                  <span className="font-mono text-xs text-[#22d3ee]">{milestone.year}</span>
+                  <p className="text-sm font-semibold text-[#e2e8f0] mt-0.5">{milestone.title}</p>
+                  <p className="text-xs text-[#64748b] mt-0.5">{milestone.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Beyond Code */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.75 }}
+        className="p-5 rounded-xl bg-[#111827] border border-[#1e293b]"
+      >
+        <h4 className="text-sm font-semibold text-[#e2e8f0] mb-4">Beyond Code</h4>
+        <div className="space-y-3">
+          <div className="flex items-start gap-3">
+            <Medal className="w-4 h-4 text-[#f59e0b] mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm text-[#e2e8f0] font-medium">National Level Taekwondo Player</p>
+              <p className="text-xs text-[#64748b] mt-0.5">Multiple Gold Medals · Represented Maharashtra State</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Guitar className="w-4 h-4 text-[#6366f1] mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm text-[#e2e8f0] font-medium">Indie-Rock Band Member</p>
+              <p className="text-xs text-[#64748b] mt-0.5">Guitarist & Vocalist · Hard Rock Cafe, Blue Frog</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Lightbulb className="w-4 h-4 text-[#22c55e] mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm text-[#e2e8f0] font-medium">Product Builder at Heart</p>
+              <p className="text-xs text-[#64748b] mt-0.5">Love turning ideas into reality from scratch</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

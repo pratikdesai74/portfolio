@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,41 +14,45 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://pratikdesai.dev"),
   title: {
-    default: "Pratik Desai | Senior Software Engineer - Fintech & Payments Expert",
+    default: "Pratik Desai | Founding Senior Backend Engineer — Distributed Systems & AI Platforms",
     template: "%s | Pratik Desai",
   },
   description:
-    "Senior Software Engineer available for remote opportunities. 7+ years in Fintech, Payments & Cybersecurity. Built systems at Securonix, Mastercard, TartanHq processing millions of transactions. Java, Spring Boot, Kafka, AWS expert. Open to remote roles worldwide.",
+    "Founding Senior Backend Engineer (he/him) with 7+ years building distributed systems, event-driven platforms & AI-powered tools. Expert in Java, Spring Boot, Kafka, LLM/RAG pipelines, Multi-Agent Architecture & Platform Engineering. Built at Mastercard, TartanHQ, Securonix, Volante.",
   keywords: [
     "Pratik Desai",
-    "Software Engineer",
-    "Senior Software Engineer",
-    "Remote Software Engineer",
+    "Founding Senior Backend Engineer",
+    "Senior Backend Engineer",
+    "Distributed Systems",
+    "Event-Driven Architecture",
+    "Platform Engineering",
+    "Java Engineer",
+    "Spring Boot",
+    "Apache Kafka",
+    "AI Engineer",
+    "LLM Engineer",
+    "RAG Systems",
+    "Multi-Agent Architecture",
     "Remote Backend Developer",
-    "Remote Java Developer",
-    "Hire Remote Developer",
-    "Backend Developer",
-    "Java Developer",
-    "Spring Boot Developer",
+    "Microservices",
+    "AWS Developer",
     "Fintech Engineer",
     "Payments Engineer",
-    "Cybersecurity Engineer",
-    "Kafka Developer",
-    "AWS Developer",
-    "Microservices",
-    "Distributed Systems",
-    "Remote Work",
-    "Work From Home Developer",
-    "Freelance Java Developer",
-    "Contract Developer",
     "Pune",
     "India",
     "Mastercard",
     "Securonix",
-    "TartanHq",
+    "TartanHQ",
   ],
   authors: [{ name: "Pratik Desai" }],
   creator: "Pratik Desai",
@@ -57,15 +61,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://pratikdesai.dev",
     siteName: "Pratik Desai Portfolio",
-    title: "Pratik Desai | Senior Software Engineer - Available for Remote Roles",
+    title: "Pratik Desai | Founding Senior Backend Engineer — Distributed Systems & AI Platforms",
     description:
-      "Senior Software Engineer available for remote opportunities. 7+ years in Fintech, Payments & Cybersecurity. Java, Spring Boot, Kafka, AWS expert.",
+      "Founding Senior Backend Engineer building distributed systems, event-driven platforms & AI-powered tools. Java, Spring Boot, Kafka, LLM/RAG & Multi-Agent Architecture.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pratik Desai | Senior Software Engineer",
+    title: "Pratik Desai | Founding Senior Backend Engineer",
     description:
-      "Senior Software Engineer available for remote roles. 7+ years in Fintech, Payments & Cybersecurity.",
+      "Building distributed systems & AI-powered platforms. Java, Spring Boot, Kafka, LLM/RAG & Multi-Agent Architecture.",
     creator: "@pratikdesai",
   },
   robots: {
@@ -87,13 +91,9 @@ const jsonLd = {
   name: "Pratik Desai",
   url: "https://pratikdesai.dev",
   image: "https://pratikdesai.dev/pratik-photo.jpg",
-  jobTitle: "Senior Software Engineer",
-  worksFor: {
-    "@type": "Organization",
-    name: "Securonix",
-  },
+  jobTitle: "Founding Senior Backend Engineer",
   description:
-    "Senior Software Engineer with 7+ years experience specializing in Fintech, Payments, and Cybersecurity.",
+    "Founding Senior Backend Engineer with 7+ years building distributed systems, event-driven platforms & AI-powered tools using Java, Spring Boot, Kafka, LLM and RAG pipelines.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Pune",
@@ -110,22 +110,19 @@ const jsonLd = {
     "Java",
     "Spring Boot",
     "Apache Kafka",
-    "AWS",
-    "Microservices",
     "Distributed Systems",
-    "Fintech",
+    "Event-Driven Architecture",
+    "Platform Engineering",
+    "LLM",
+    "RAG Systems",
+    "Multi-Agent Architecture",
+    "Microservices",
+    "AWS",
     "Payment Systems",
-    "Cybersecurity",
   ],
   alumniOf: [
-    {
-      "@type": "EducationalOrganization",
-      name: "CDAC ACTS Pune",
-    },
-    {
-      "@type": "EducationalOrganization",
-      name: "Shivaji University",
-    },
+    { "@type": "EducationalOrganization", name: "CDAC ACTS Pune" },
+    { "@type": "EducationalOrganization", name: "Shivaji University" },
   ],
 };
 
@@ -143,7 +140,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0a0a0f] text-[#f4f4f5]`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} antialiased bg-[#0a0f1e] text-[#e2e8f0]`}
       >
         <div className="mesh-gradient" aria-hidden="true" />
         {children}
