@@ -70,20 +70,25 @@ export function ChatWidget() {
           if (!part.startsWith("data: ")) continue;
           const raw = part.slice(6);
           if (raw === "[DONE]") break;
+
+          let parsed: { text?: string; error?: string };
           try {
-            const { text: chunk, error } = JSON.parse(raw);
-            if (error) throw new Error(error);
-            fullText += chunk;
-            setMessages((prev) => {
-              const updated = [...prev];
-              updated[updated.length - 1] = {
-                role: "assistant",
-                content: fullText,
-                streaming: true,
-              };
-              return updated;
-            });
-          } catch {}
+            parsed = JSON.parse(raw);
+          } catch {
+            continue; // skip malformed lines
+          }
+
+          if (parsed.error) throw new Error(parsed.error);
+          fullText += parsed.text || "";
+          setMessages((prev) => {
+            const updated = [...prev];
+            updated[updated.length - 1] = {
+              role: "assistant",
+              content: fullText,
+              streaming: true,
+            };
+            return updated;
+          });
         }
       }
 
