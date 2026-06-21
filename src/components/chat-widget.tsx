@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Loader2, Bot } from "lucide-react";
+import { MessageSquare, X, Send, Loader2, Bot, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SUGGESTED = [
@@ -23,8 +23,25 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
+  // Teaser bubble: show after 3s, hide once user interacts
+  const [showTeaser, setShowTeaser] = useState(false);
+  const [teaserDismissed, setTeaserDismissed] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Show teaser bubble after 3 seconds (only once)
+  useEffect(() => {
+    if (teaserDismissed) return;
+    const t = setTimeout(() => setShowTeaser(true), 3000);
+    return () => clearTimeout(t);
+  }, [teaserDismissed]);
+
+  // Auto-dismiss teaser after 8 seconds
+  useEffect(() => {
+    if (!showTeaser) return;
+    const t = setTimeout(() => setShowTeaser(false), 8000);
+    return () => clearTimeout(t);
+  }, [showTeaser]);
 
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -35,6 +52,12 @@ export function ChatWidget() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  const handleOpen = () => {
+    setOpen((v) => !v);
+    setShowTeaser(false);
+    setTeaserDismissed(true);
+  };
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || isStreaming) return;
@@ -75,7 +98,7 @@ export function ChatWidget() {
           try {
             parsed = JSON.parse(raw);
           } catch {
-            continue; // skip malformed lines
+            continue;
           }
 
           if (parsed.error) throw new Error(parsed.error);
@@ -119,27 +142,100 @@ export function ChatWidget() {
 
   return (
     <>
-      {/* Floating button */}
-      <motion.button
-        onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 p-3.5 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#6366f1] text-white shadow-lg shadow-[#22d3ee]/20 hover:shadow-xl hover:shadow-[#22d3ee]/30 transition-shadow"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label={open ? "Close chat" : "Chat with AI about Pratik"}
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.span
-            key={open ? "close" : "open"}
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="block"
+      {/* Teaser bubble */}
+      <AnimatePresence>
+        {showTeaser && !open && (
+          <motion.div
+            initial={{ opacity: 0, x: 20, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            className="fixed bottom-[88px] right-6 z-50"
           >
-            {open ? <X className="w-5 h-5" /> : <MessageSquare className="w-5 h-5" />}
-          </motion.span>
-        </AnimatePresence>
-      </motion.button>
+            <div className="relative bg-[#111827] border border-[#22d3ee]/30 rounded-2xl rounded-br-sm px-4 py-3 shadow-xl shadow-[#22d3ee]/10 max-w-[220px]">
+              {/* Dismiss */}
+              <button
+                onClick={() => { setShowTeaser(false); setTeaserDismissed(true); }}
+                className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#1e293b] border border-[#334155] text-[#475569] hover:text-[#94a3b8] flex items-center justify-center"
+                aria-label="Dismiss"
+              >
+                <X className="w-2.5 h-2.5" />
+              </button>
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles className="w-3 h-3 text-[#22d3ee] shrink-0" />
+                <span className="text-xs font-semibold text-[#e2e8f0]">AI knows everything about me!</span>
+              </div>
+              <p className="text-[11px] text-[#64748b] leading-snug">
+                Ask about my projects, skills, or experience →
+              </p>
+              {/* Arrow pointing to button */}
+              <div className="absolute -bottom-2 right-4 w-3 h-3 bg-[#111827] border-r border-b border-[#22d3ee]/30 rotate-45" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating button — with pulsing glow ring */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {/* Pulsing ring (only when chat is closed) */}
+        {!open && (
+          <>
+            <motion.span
+              className="absolute inset-0 rounded-full"
+              animate={{ scale: [1, 1.55], opacity: [0.5, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+              style={{ background: "radial-gradient(circle, rgba(34,211,238,0.35) 0%, transparent 70%)" }}
+            />
+            <motion.span
+              className="absolute inset-0 rounded-full"
+              animate={{ scale: [1, 1.3], opacity: [0.4, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut", delay: 0.6 }}
+              style={{ background: "radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 70%)" }}
+            />
+          </>
+        )}
+
+        <motion.button
+          onClick={handleOpen}
+          className={cn(
+            "relative flex items-center gap-2.5 rounded-full text-white transition-shadow",
+            open
+              ? "p-3.5 bg-gradient-to-br from-[#22d3ee] to-[#6366f1] shadow-lg"
+              : "pl-4 pr-5 py-3 bg-gradient-to-br from-[#22d3ee] to-[#6366f1] shadow-lg shadow-[#22d3ee]/25 hover:shadow-xl hover:shadow-[#22d3ee]/40"
+          )}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+          aria-label={open ? "Close chat" : "Chat with AI about Pratik"}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={open ? "close" : "open"}
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="block shrink-0"
+            >
+              {open ? <X className="w-5 h-5" /> : <Bot className="w-5 h-5" />}
+            </motion.span>
+          </AnimatePresence>
+
+          {/* Label — only when closed */}
+          <AnimatePresence>
+            {!open && (
+              <motion.span
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.2 }}
+                className="text-sm font-semibold whitespace-nowrap overflow-hidden"
+              >
+                Ask AI about me
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </motion.button>
+      </div>
 
       {/* Chat panel */}
       <AnimatePresence>

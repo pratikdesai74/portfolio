@@ -97,7 +97,7 @@ export function About() {
             <Award className="w-3.5 h-3.5 text-[#22d3ee]" />
             IBS Intelligence Award Winner
           </span>
-          <span className="font-mono text-xs text-[#475569]">7+ yrs · distributed systems & AI platforms</span>
+          <span className="font-mono text-xs text-[#475569]">7.5+ yrs · distributed systems & AI platforms</span>
         </div>
       </motion.div>
 

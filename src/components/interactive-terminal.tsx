@@ -34,7 +34,7 @@ const COMMANDS: Record<string, string | ReactNode> = {
 │  PRATIK DESAI - Senior Software Engineer                    │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  7+ years crafting scalable systems in Fintech, Payments,   │
+│  7.5+ years crafting scalable systems in Fintech, Payments, │
 │  and Cybersecurity domains.                                 │
 │                                                             │
 │  🎯 Mechanical Engineering to Tech - unconventional journey │

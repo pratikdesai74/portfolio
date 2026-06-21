@@ -95,7 +95,7 @@ export default async function Image() {
             }}
           >
             {[
-              { value: "7+", label: "Years" },
+              { value: "7.5+", label: "Years" },
               { value: "4", label: "Companies" },
               { value: "10M+", label: "Users Impacted" },
             ].map((stat) => (

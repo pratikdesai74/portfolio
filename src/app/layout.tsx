@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Pratik Desai",
   },
   description:
-    "Founding Senior Backend Engineer (he/him) with 7+ years building distributed systems, event-driven platforms & AI-powered tools. Expert in Java, Spring Boot, Kafka, LLM/RAG pipelines, Multi-Agent Architecture & Platform Engineering. Built at Mastercard, TartanHQ, Securonix, Volante.",
+    "Founding Senior Backend Engineer (he/him) with 7.5+ years building distributed systems, event-driven platforms & AI-powered tools. Expert in Java, Spring Boot, Kafka, LLM/RAG pipelines, Multi-Agent Architecture & Platform Engineering. Built at Mastercard, TartanHQ, Securonix, Volante.",
   keywords: [
     "Pratik Desai",
     "Founding Senior Backend Engineer",
@@ -93,7 +93,7 @@ const jsonLd = {
   image: "https://pratikdesai.dev/pratik-photo.jpg",
   jobTitle: "Founding Senior Backend Engineer",
   description:
-    "Founding Senior Backend Engineer with 7+ years building distributed systems, event-driven platforms & AI-powered tools using Java, Spring Boot, Kafka, LLM and RAG pipelines.",
+    "Founding Senior Backend Engineer with 7.5+ years building distributed systems, event-driven platforms & AI-powered tools using Java, Spring Boot, Kafka, LLM and RAG pipelines.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Pune",

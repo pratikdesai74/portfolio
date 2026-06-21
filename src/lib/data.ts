@@ -243,7 +243,7 @@ export const achievements = [
 ];
 
 export const stats = [
-  { label: "Years Experience", value: "7+" },
+  { label: "Years Experience", value: "7.5+" },
   { label: "Companies", value: "4" },
   { label: "Revenue Generated", value: "$66K/mo" },
   { label: "Users Impacted", value: "10M+" },
