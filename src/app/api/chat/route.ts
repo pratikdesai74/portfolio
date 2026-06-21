@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import Groq from "groq-sdk";
 import {
   personalInfo,
   experiences,
@@ -62,7 +62,8 @@ ${testimonialSummary}
 - Be concise and friendly. Keep answers under 150 words unless the question requires more detail.
 - Speak about Pratik in third person.
 - If asked something unrelated to Pratik, politely redirect to topics about his work and background.
-- Highlight his expertise in distributed systems, Java/Spring Boot/Kafka, and AI/RAG/LLM architecture when relevant.
+- Highlight his expertise in distributed systems, Java/Spring Boot/Kafka, AI agent pipelines, and RAG/LLM architecture when relevant.
+- If asked about AI agents or the demo on this site, mention his work on multi-agent customer issue analysis pipelines using Jira MCP, Loki, and LLM orchestration.
 `;
 }
 
@@ -73,31 +74,31 @@ export async function POST(req: NextRequest) {
     return new Response(JSON.stringify({ error: "Invalid message" }), { status: 400 });
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return new Response(JSON.stringify({ error: "API key not configured" }), { status: 500 });
   }
 
-  const client = new Anthropic({ apiKey });
+  const client = new Groq({ apiKey });
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
     async start(controller) {
       try {
-        const messageStream = await client.messages.create({
-          model: "claude-sonnet-4-6",
+        const completion = await client.chat.completions.create({
+          model: "llama-3.3-70b-versatile",
           max_tokens: 512,
-          system: buildSystemPrompt(),
-          messages: [{ role: "user", content: message }],
+          messages: [
+            { role: "system", content: buildSystemPrompt() },
+            { role: "user", content: message },
+          ],
           stream: true,
         });
 
-        for await (const event of messageStream) {
-          if (
-            event.type === "content_block_delta" &&
-            event.delta.type === "text_delta"
-          ) {
-            const data = `data: ${JSON.stringify({ text: event.delta.text })}\n\n`;
+        for await (const chunk of completion) {
+          const text = chunk.choices[0]?.delta?.content ?? "";
+          if (text) {
+            const data = `data: ${JSON.stringify({ text })}\n\n`;
             controller.enqueue(encoder.encode(data));
           }
         }

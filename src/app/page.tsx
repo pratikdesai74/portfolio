@@ -4,16 +4,21 @@ import { LeftPanel } from "@/components/left-panel";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
+import { AgentPipeline } from "@/components/sections/agent-pipeline";
 import { Skills } from "@/components/sections/skills";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Blog } from "@/components/sections/blog";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
 import { ChatWidget } from "@/components/chat-widget";
+import ThreeBackgroundWrapper from "@/components/three-background-wrapper";
 
 export default function Home() {
   return (
     <>
+      {/* WebGL neural-network background */}
+      <ThreeBackgroundWrapper />
+
       <ScrollProgress />
       <Navigation />
 
@@ -29,6 +34,7 @@ export default function Home() {
             <About />
             <Experience />
             <Projects />
+            <AgentPipeline />
             <Skills />
             <Testimonials />
             <Blog />
