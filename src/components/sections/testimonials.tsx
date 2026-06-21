@@ -1,39 +1,16 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Quote, ExternalLink } from "lucide-react";
 import { testimonials, personalInfo } from "@/lib/data";
-import { cn } from "@/lib/utils";
+
+// Show the 3 most impactful testimonials prominently, rest accessible via LinkedIn
+const FEATURED = testimonials.slice(0, 3);   // Hiren, Manas (CTO), Jatin
 
 export function Testimonials() {
   const containerRef = useRef<HTMLElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  const slideVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 260 : -260, opacity: 0 }),
-    center: { zIndex: 1, x: 0, opacity: 1 },
-    exit: (dir: number) => ({ zIndex: 0, x: dir < 0 ? 260 : -260, opacity: 0 }),
-  };
-
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrentIndex((prev) => {
-      let next = prev + newDirection;
-      if (next < 0) next = testimonials.length - 1;
-      if (next >= testimonials.length) next = 0;
-      return next;
-    });
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => paginate(1), 8000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const current = testimonials[currentIndex];
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
 
   return (
     <section
@@ -68,104 +45,78 @@ export function Testimonials() {
         Recommendations from colleagues and leaders I&apos;ve had the privilege to work with.
       </motion.p>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="relative"
-      >
-        <div className="relative overflow-hidden min-h-[280px]">
-          <AnimatePresence initial={false} custom={direction}>
+      {/* Grid: featured full-width (CTO) + 2 side-by-side below */}
+      <div className="space-y-4">
+        {/* Featured — CTO testimonial (index 1, Manas Mallik) full width */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="p-6 rounded-2xl bg-[#111827] border border-[#22d3ee]/15 relative"
+        >
+          <div className="absolute top-5 right-5 text-[#22d3ee]/8">
+            <Quote className="w-12 h-12" />
+          </div>
+          <blockquote className="text-sm text-[#94a3b8] leading-relaxed mb-5 relative z-10 max-w-2xl">
+            &ldquo;{FEATURED[1].quote}&rdquo;
+          </blockquote>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#6366f1] flex items-center justify-center text-white font-bold text-sm shrink-0">
+              {FEATURED[1].name.split(" ").map(n => n[0]).join("")}
+            </div>
+            <div>
+              <div className="font-semibold text-[#e2e8f0] text-sm">{FEATURED[1].name}</div>
+              <div className="text-xs text-[#64748b]">
+                {FEATURED[1].role} · {FEATURED[1].company}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Two side-by-side */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[FEATURED[0], FEATURED[2]].map((t, i) => (
             <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 280, damping: 28 },
-                opacity: { duration: 0.18 },
-              }}
-              className="absolute inset-0"
+              key={t.name}
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.25 + i * 0.08 }}
+              className="p-5 rounded-2xl bg-[#111827] border border-[#1e293b] relative"
             >
-              <div className="h-full p-6 rounded-2xl bg-[#111827] border border-[#1e293b] relative">
-                <div className="absolute top-5 right-5 text-[#22d3ee]/10">
-                  <Quote className="w-10 h-10" />
+              <div className="absolute top-4 right-4 text-[#22d3ee]/6">
+                <Quote className="w-8 h-8" />
+              </div>
+              <blockquote className="text-xs text-[#94a3b8] leading-relaxed mb-4 relative z-10 line-clamp-5">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center text-white font-bold text-xs shrink-0">
+                  {t.name.split(" ").map(n => n[0]).join("")}
                 </div>
-
-                <blockquote className="text-sm text-[#94a3b8] leading-relaxed mb-5 relative z-10">
-                  &ldquo;{current.quote}&rdquo;
-                </blockquote>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#6366f1] flex items-center justify-center text-white font-bold text-sm shrink-0">
-                    {current.name.split(" ").map((n) => n[0]).join("")}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#e2e8f0] text-sm">{current.name}</div>
-                    <div className="text-xs text-[#64748b]">
-                      {current.role} · {current.company}
-                    </div>
-                  </div>
+                <div>
+                  <div className="font-semibold text-[#e2e8f0] text-xs">{t.name}</div>
+                  <div className="text-[10px] text-[#64748b]">{t.role}</div>
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
-
-        <div className="flex items-center justify-between mt-5">
-          <div className="flex items-center gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                className={cn(
-                  "rounded-full transition-all duration-300",
-                  index === currentIndex
-                    ? "w-5 h-1.5 bg-[#22d3ee]"
-                    : "w-1.5 h-1.5 bg-[#1e293b] hover:bg-[#22d3ee]/40"
-                )}
-                aria-label={`Testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          <div className="flex gap-2">
-            <button
-              onClick={() => paginate(-1)}
-              className="p-2 rounded-full bg-[#111827] border border-[#1e293b] text-[#64748b] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-colors"
-              aria-label="Previous"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => paginate(1)}
-              className="p-2 rounded-full bg-[#111827] border border-[#1e293b] text-[#64748b] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-colors"
-              aria-label="Next"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </motion.div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.4 }}
-        className="mt-6"
+        transition={{ duration: 0.4, delay: 0.5 }}
+        className="mt-6 flex items-center gap-4"
       >
         <a
           href={personalInfo.social.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
         >
-          View all recommendations on LinkedIn →
+          View all {testimonials.length} recommendations on LinkedIn
+          <ExternalLink className="w-3 h-3" />
         </a>
       </motion.div>
     </section>

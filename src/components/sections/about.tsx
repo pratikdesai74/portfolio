@@ -1,11 +1,49 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { MapPin, Award, TrendingUp, Medal, Guitar, Lightbulb } from "lucide-react";
 import { personalInfo, stats } from "@/lib/data";
 import { AgentTrace } from "@/components/agent-trace";
+
+/* ── Count-up hook ─────────────────────────────────────────── */
+function useCountUp(target: string, active: boolean): string {
+  const [display, setDisplay] = useState("0");
+  useEffect(() => {
+    if (!active) return;
+    // Parse prefix/suffix/number from values like "7.5+", "$66K/mo", "10M+", "4"
+    const num = parseFloat(target.replace(/[^0-9.]/g, "")) || 0;
+    const prefix = target.startsWith("$") ? "$" : "";
+    const suffix = target.replace(/^[\$]?[0-9.]+/, ""); // e.g. "+", "K/mo", "M+"
+    const duration = 1400;
+    const startTime = performance.now();
+    let raf: number;
+    const tick = (now: number) => {
+      const t = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const current = num * eased;
+      const formatted = num % 1 === 0
+        ? Math.round(current).toString()
+        : current.toFixed(1);
+      setDisplay(prefix + formatted + suffix);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, target]);
+  return display;
+}
+
+function StatCard({ stat, active }: { stat: { label: string; value: string }; active: boolean }) {
+  const displayValue = useCountUp(stat.value, active);
+  return (
+    <div className="p-4 rounded-xl bg-[#111827] border border-[#1e293b] hover:border-[#22d3ee]/20 transition-colors">
+      <div className="text-2xl font-bold font-display gradient-text">{displayValue}</div>
+      <div className="text-xs text-[#64748b] mt-1">{stat.label}</div>
+    </div>
+  );
+}
 
 const journeyMilestones = [
   {
@@ -116,7 +154,7 @@ export function About() {
         ))}
       </div>
 
-      {/* Stats bento */}
+      {/* Stats bento — count-up on scroll-in-view */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -124,13 +162,7 @@ export function About() {
         className="grid grid-cols-2 gap-3 mb-10"
       >
         {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="p-4 rounded-xl bg-[#111827] border border-[#1e293b] hover:border-[#22d3ee]/20 transition-colors"
-          >
-            <div className="text-2xl font-bold font-display gradient-text">{stat.value}</div>
-            <div className="text-xs text-[#64748b] mt-1">{stat.label}</div>
-          </div>
+          <StatCard key={stat.label} stat={stat} active={isInView} />
         ))}
       </motion.div>
 

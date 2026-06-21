@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const NODE_COUNT = 110;
+const NODE_COUNT = 55;       // reduced 50% — calmer behind text
 const LINE_THRESHOLD = 5.5;
 
 export default function ThreeBackground() {
@@ -67,10 +67,10 @@ export default function ThreeBackground() {
     nodeGeo.setAttribute("color", new THREE.BufferAttribute(nodeColArr, 3));
 
     const nodeMat = new THREE.PointsMaterial({
-      size: 0.12,
+      size: 0.10,
       vertexColors: true,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.4,           // reduced to ~40% — calm behind text
       sizeAttenuation: true,
     });
     const nodePoints = new THREE.Points(nodeGeo, nodeMat);
@@ -99,7 +99,7 @@ export default function ThreeBackground() {
     const lineMat = new THREE.LineBasicMaterial({
       color: "#1e293b",
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.22,          // very subtle connection lines
     });
     const lines = new THREE.LineSegments(lineGeo, lineMat);
     scene.add(lines);
@@ -126,6 +126,15 @@ export default function ThreeBackground() {
       mouse.targetY = -(e.clientY / window.innerHeight - 0.5) * 2;
     };
     window.addEventListener("mousemove", onMouseMove, { passive: true });
+
+    /* ── Scroll: fade out past hero ─────────────── */
+    let scrollFade = 1;
+    const onScroll = () => {
+      const progress = Math.min(window.scrollY / window.innerHeight, 1);
+      scrollFade = 1 - progress * 0.75; // dim to 25% past hero
+      renderer.domElement.style.opacity = String(scrollFade);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     /* ── Resize ─────────────────────────────────── */
     const onResize = () => {
@@ -188,6 +197,7 @@ export default function ThreeBackground() {
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       renderer.dispose();
       nodeGeo.dispose();

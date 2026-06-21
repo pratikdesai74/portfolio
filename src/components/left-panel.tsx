@@ -55,40 +55,29 @@ export function LeftPanel() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="text-lg font-semibold text-[#94a3b8] mb-2 leading-snug"
+          className="text-lg font-semibold text-[#94a3b8] mb-3 leading-snug"
         >
           Founding Senior Backend Engineer
         </motion.h2>
 
+        {/* HIGH-CONTRAST HOOK — the line that closes */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.25 }}
-          className="text-sm text-[#475569] font-mono mb-5 leading-relaxed"
+          className="text-base font-semibold text-[#e2e8f0] leading-snug mb-4"
         >
-          Platform Engineering · Distributed Systems<br />
-          LLM, RAG & Multi-Agent Architecture
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="text-[#64748b] leading-relaxed max-w-xs text-sm"
-        >
-          <StreamingText
-            text="Building high-scale event-driven platforms and AI-powered developer tools. Java · Spring Boot · Kafka at the core."
-            speed={22}
-            delay={800}
-          />
+          Scaled payment &amp; SIEM platforms to{" "}
+          <span className="gradient-text">10M+ users</span> and{" "}
+          <span className="gradient-text">2M+ TPS</span>.
         </motion.p>
 
         {/* Availability */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          className="mt-5 inline-flex items-center gap-2"
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="mb-4 inline-flex items-center gap-2"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
@@ -97,12 +86,50 @@ export function LeftPanel() {
           <span className="text-xs font-mono text-[#22c55e]">Open to opportunities</span>
         </motion.div>
 
-        {/* RAG Pipeline visualization */}
+        {/* AI assistant invite */}
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.35 }}
+          className="mb-5 flex items-center gap-2.5 bg-[#22d3ee]/5 border border-[#22d3ee]/15 rounded-xl px-3 py-2.5"
+        >
+          <span className="text-base shrink-0">🤖</span>
+          <p className="text-xs text-[#64748b] leading-snug">
+            New —{" "}
+            <span className="text-[#e2e8f0] font-medium">ask the AI anything about my work</span>
+            {" "}↘
+          </p>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="text-[#64748b] leading-relaxed max-w-xs text-sm mb-1"
+        >
+          <StreamingText
+            text="Building high-scale event-driven platforms and AI-powered developer tools. Java · Spring Boot · Kafka at the core."
+            speed={22}
+            delay={800}
+          />
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.45 }}
+          className="text-xs text-[#475569] font-mono leading-relaxed"
+        >
+          Platform Engineering · Distributed Systems<br />
+          LLM, RAG &amp; Multi-Agent Architecture
+        </motion.p>
+
+        {/* RAG Pipeline — demoted, calm motif */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 1.2 }}
-          className="mt-6"
+          className="mt-5 opacity-55"
         >
           <RAGPipeline />
         </motion.div>

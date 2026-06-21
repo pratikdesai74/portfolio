@@ -25,12 +25,12 @@ export default function Home() {
       <div className="relative z-10 max-w-screen-xl mx-auto">
         <div className="lg:flex">
           {/* Left: sticky panel — fixed while right scrolls */}
-          <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-[45%] lg:overflow-y-auto px-6 md:px-10 lg:px-16 pt-16 pb-10 lg:py-24">
+          <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-[38%] lg:overflow-y-auto px-6 md:px-10 lg:px-12 pt-16 pb-10 lg:py-24">
             <LeftPanel />
           </header>
 
-          {/* Right: scrollable content */}
-          <main className="lg:w-[55%] px-6 md:px-10 lg:pl-10 lg:pr-16">
+          {/* Right: scrollable content — wider reading area */}
+          <main className="lg:w-[62%] px-6 md:px-10 lg:pl-10 lg:pr-14">
             <About />
             <Experience />
             <Projects />
