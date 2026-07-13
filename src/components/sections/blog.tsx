@@ -4,35 +4,51 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, BookOpen, Calendar, Clock } from "lucide-react";
 
-// Note: individual post URLs not available yet — linking to Medium profile.
-// Mark each as "Coming soon" to avoid misleading dead-end links.
+// Back to First Principles — a 10-part series on AI from the ground up.
 const blogPosts = [
   {
-    title: "Building Scalable Payment Systems with Event-Driven Architecture",
+    title: "The LLM Is Brilliant. And Completely Helpless.",
     description:
-      "Lessons learned from designing high-throughput payment systems that process millions of transactions.",
-    date: "Coming soon",
+      "Every LLM hits three walls: a knowledge cutoff, a context window, and no ability to act in the world. Here's exactly why — and how agents were built to close the gap.",
+    date: "Jul 2026",
     readTime: "8 min read",
-    tags: ["System Design", "Kafka", "Payments"],
-    link: null,
+    tags: ["LLM", "Agentic AI", "System Design"],
+    link: "https://www.linkedin.com/pulse/llm-brilliant-completely-helpless-heres-why-pratik-desai-1f1wf",
+    type: "article",
+    series: "Back to First Principles · Part 4",
   },
   {
-    title: "From Monolith to Microservices: A Practical Migration Guide",
+    title: "ChatGPT Isn't Thinking. It's Predicting.",
     description:
-      "A step-by-step approach to migrating legacy systems to microservices without disrupting business operations.",
-    date: "Coming soon",
-    readTime: "12 min read",
-    tags: ["Microservices", "Architecture", "Best Practices"],
-    link: null,
-  },
-  {
-    title: "RAG Systems: Building AI-Powered Document Intelligence",
-    description:
-      "How I built TalkToPDF — a RAG-based tool for natural language document querying using LangChain and vector databases.",
-    date: "Coming soon",
+      "How LLMs actually generate text — one token at a time. Covers tokenisation, BPE, the autoregressive loop, softmax, temperature, and why 'आप कैसे हो?' costs 4× more tokens than 'How are you?'",
+    date: "Jul 2026",
     readTime: "10 min read",
-    tags: ["AI/ML", "LangChain", "RAG"],
-    link: null,
+    tags: ["LLM", "Tokenization", "Machine Learning"],
+    link: "https://www.linkedin.com/pulse/chatgpt-isnt-thinking-its-predicting-heres-exactly-how-pratik-desai-jo4pf",
+    type: "article",
+    series: "Back to First Principles · Part 3",
+  },
+  {
+    title: "What Does It Actually Mean for a Machine to Learn?",
+    description:
+      "Nobody teaches a machine the rule. You show it examples and it figures the rule out. Here's what's happening inside a neural network — no jargon, just the actual mechanics.",
+    date: "Jul 2026",
+    readTime: "5 min read",
+    tags: ["Neural Networks", "Machine Learning", "AI Fundamentals"],
+    link: "https://www.linkedin.com/posts/pratikvdesai_machinelearning-neuralnetworks-buildinpublic-share-7479114327057293312-dg85/",
+    type: "post",
+    series: "Back to First Principles · Part 2",
+  },
+  {
+    title: "Why We Can't Always Solve Problems With Rules",
+    description:
+      "7 years of writing backend code taught me to break problems into logic. Then I hit fraud detection — and realised some problems refuse to stay still. That's what pulled me into AI.",
+    date: "Jul 2026",
+    readTime: "4 min read",
+    tags: ["AI Fundamentals", "Backend Engineering", "Build in Public"],
+    link: "https://www.linkedin.com/posts/pratikvdesai_artificialintelligence-machinelearning-softwareengineering-share-7477790230863843328-qEva/",
+    type: "post",
+    series: "Back to First Principles · Part 1",
   },
 ];
 
@@ -41,22 +57,32 @@ type Post = (typeof blogPosts)[number];
 function CardInner({ post, linked }: { post: Post; linked: boolean }) {
   return (
     <>
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-3">
         <div className="w-8 h-8 rounded-xl bg-[#22d3ee]/10 flex items-center justify-center text-[#22d3ee] group-hover:bg-[#22d3ee]/20 transition-colors">
           <BookOpen className="w-4 h-4" />
         </div>
-        {!linked && (
-          <span className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#fbbf24]/10 text-[#fbbf24] border border-[#fbbf24]/20">
-            Coming soon
+        <div className="flex items-center gap-1.5">
+          {post.type === "article" && (
+            <span className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#22d3ee]/10 text-[#22d3ee] border border-[#22d3ee]/20">
+              Article
+            </span>
+          )}
+          {post.type === "post" && (
+            <span className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#475569]/20 text-[#64748b] border border-[#475569]/20">
+              Post
+            </span>
+          )}
+          <span className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#6366f1]/10 text-[#818cf8] border border-[#6366f1]/20">
+            {post.series}
           </span>
-        )}
+        </div>
       </div>
 
       <h3 className="font-semibold font-display text-[#e2e8f0] mb-2 group-hover:text-[#22d3ee] transition-colors line-clamp-2 text-base">
         {post.title}
       </h3>
 
-      <p className="text-sm text-[#64748b] mb-4 line-clamp-2 leading-relaxed">
+      <p className="text-sm text-[#64748b] mb-4 line-clamp-3 leading-relaxed">
         {post.description}
       </p>
 
@@ -78,10 +104,11 @@ function CardInner({ post, linked }: { post: Post; linked: boolean }) {
         </span>
         {linked ? (
           <span className="flex items-center gap-1 text-[#22d3ee] opacity-0 group-hover:opacity-100 transition-opacity">
-            Read on Medium <ArrowUpRight className="w-3 h-3" />
+            {post.type === "article" ? "Read article" : "View post"}
+            <ArrowUpRight className="w-3 h-3" />
           </span>
         ) : (
-          <span className="flex items-center gap-1 text-[#475569]">
+          <span className="flex items-center gap-1 text-[#fbbf24]">
             <Clock className="w-3 h-3" />
             {post.readTime}
           </span>
@@ -153,12 +180,12 @@ export function Blog() {
         className="mt-8"
       >
         <a
-          href="https://medium.com/@pratikvilasdesai"
+          href="https://www.linkedin.com/in/pratikdesai99/recent-activity/articles/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
         >
-          View all articles on Medium
+          View all articles on LinkedIn
           <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
       </motion.div>
