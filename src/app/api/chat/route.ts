@@ -86,8 +86,8 @@ export async function POST(req: NextRequest) {
     async start(controller) {
       try {
         const completion = await client.chat.completions.create({
-          model: "llama-3.3-70b-versatile",
-          max_tokens: 512,
+          model: "openai/gpt-oss-120b",
+          max_tokens: 1024,
           messages: [
             { role: "system", content: buildSystemPrompt() },
             { role: "user", content: message },

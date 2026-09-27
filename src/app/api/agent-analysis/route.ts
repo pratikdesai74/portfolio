@@ -102,8 +102,8 @@ Provide root cause, blast radius, immediate fix, and prevention strategy.`;
     async start(controller) {
       try {
         const completion = await client.chat.completions.create({
-          model: "llama-3.3-70b-versatile",
-          max_tokens: 800,
+          model: "openai/gpt-oss-120b",
+          max_tokens: 1536,
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt },
