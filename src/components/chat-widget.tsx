@@ -257,7 +257,7 @@ export function ChatWidget() {
                 <div>
                   <p className="text-sm font-semibold text-[#e2e8f0]">Ask about Pratik</p>
                   <p className="text-[10px] font-mono text-[#738094]">
-                    Powered by Groq · llama-3.3-70b
+                    Powered by Groq · gpt-oss-120b
                   </p>
                 </div>
                 <button

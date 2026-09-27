@@ -49,7 +49,7 @@ const AGENTS: Agent[] = [
   { id: "s3",    name: "S3 Config Agent",       source: "AWS S3 · config bucket",     icon: <Cloud      className="w-3.5 h-3.5" />, color: "#22c55e", finding: "Endpoint changed 3h ago",        detail: "v3 API endpoint deployed by devops-bot · new response schema undocumented" },
   { id: "sqs",   name: "SQS Inspector Agent",   source: "AWS SQS · queue metrics",    icon: <Layers     className="w-3.5 h-3.5" />, color: "#ef4444", finding: "DLQ: 234 messages (CRITICAL)",  detail: "payment-events-queue backlog: 1,847 msgs · downstream consumers failing" },
   { id: "rag",   name: "RAG Context Builder",   source: "Vector store · embeddings",  icon: <GitBranch  className="w-3.5 h-3.5" />, color: "#a78bfa", finding: "Cross-context correlations",    detail: "SDK bump ↔ log spike ↔ config change — causal chain established" },
-  { id: "llm",   name: "LLM Analysis Agent",    source: "Groq · llama-3.3-70b",       icon: <Sparkles   className="w-3.5 h-3.5" />, color: "#22d3ee", finding: "Root cause identified",         detail: "Synthesising resolution from 7 agent contexts..." },
+  { id: "llm",   name: "LLM Analysis Agent",    source: "Groq · gpt-oss-120b",       icon: <Sparkles   className="w-3.5 h-3.5" />, color: "#22d3ee", finding: "Root cause identified",         detail: "Synthesising resolution from 7 agent contexts..." },
 ];
 
 // Timing: each agent activates after this many ms from start
@@ -67,7 +67,7 @@ const LOG_LINES = [
   "▶ s3_config   → fetch payment-config.yaml",
   "▶ sqs_inspect → queue depth 1.8k · stalled",
   "▶ rag_builder → embed context · 6 sources",
-  "▶ llm_agent   → groq/llama-3.3-70b · synthesising",
+  "▶ llm_agent   → groq/gpt-oss-120b · synthesising",
   "✓ root_cause synthesised · confidence 0.92",
 ];
 
@@ -392,7 +392,7 @@ export function AgentPipeline() {
         Picks a P1 ticket from{" "}
         <span className="text-[#22d3ee] font-mono">Jira MCP</span>, gathers context from code, logs,
         DB, S3 &amp; SQS, then synthesises a root cause + fix with{" "}
-        <span className="text-[#a78bfa] font-mono">llama-3.3-70b</span> via Groq.{" "}
+        <span className="text-[#a78bfa] font-mono">gpt-oss-120b</span> via Groq.{" "}
         <span className="text-[#738094]">— running automatically ↓</span>
       </motion.p>
 
