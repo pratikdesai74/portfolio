@@ -104,7 +104,7 @@ export function AgentTrace() {
               initial={{ opacity: 0, x: -6 }}
               animate={i < visibleLines ? { opacity: 1, x: 0 } : { opacity: 0, x: -6 }}
               transition={{ duration: 0.2 }}
-              className="flex gap-2 text-[#475569]"
+              className="flex gap-2 text-[#738094]"
             >
               <span className="text-[#22d3ee] shrink-0">▶</span>
               <span>{line}</span>

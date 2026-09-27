@@ -95,7 +95,7 @@ export function Contact() {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="text-sm text-[#64748b] mb-10"
+        className="text-sm text-[#6b7d9b] mb-10"
       >
         Open to interesting conversations, collaborations, and opportunities.
       </motion.p>
@@ -116,7 +116,7 @@ export function Contact() {
               <Mail className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs text-[#64748b] font-mono mb-0.5">Email</div>
+              <div className="text-xs text-[#6b7d9b] font-mono mb-0.5">Email</div>
               <div className="text-sm text-[#e2e8f0] font-medium">{personalInfo.email}</div>
             </div>
           </a>
@@ -131,7 +131,7 @@ export function Contact() {
               <Phone className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs text-[#64748b] font-mono mb-0.5">WhatsApp / Phone</div>
+              <div className="text-xs text-[#6b7d9b] font-mono mb-0.5">WhatsApp / Phone</div>
               <div className="text-sm text-[#e2e8f0] font-medium">{personalInfo.phone}</div>
             </div>
           </a>
@@ -141,13 +141,13 @@ export function Contact() {
               <MapPin className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs text-[#64748b] font-mono mb-0.5">Location</div>
+              <div className="text-xs text-[#6b7d9b] font-mono mb-0.5">Location</div>
               <div className="text-sm text-[#e2e8f0] font-medium">{personalInfo.location}</div>
             </div>
           </div>
 
           <div className="pt-2">
-            <div className="text-xs font-mono text-[#475569] mb-3">Find me on</div>
+            <div className="text-xs font-mono text-[#738094] mb-3">Find me on</div>
             <div className="flex gap-3">
               {[
                 { href: personalInfo.social.github, label: "GitHub", icon: <Github className="w-4 h-4" /> },
@@ -160,7 +160,7 @@ export function Contact() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-[#111827] border border-[#1e293b] text-[#64748b] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-all flex items-center justify-center"
+                  className="p-2.5 rounded-xl bg-[#111827] border border-[#1e293b] text-[#6b7d9b] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-all flex items-center justify-center"
                   aria-label={label}
                 >
                   {icon}
@@ -191,28 +191,28 @@ export function Contact() {
               <input type="hidden" name="_replyto" value={personalInfo.email} />
 
               <div>
-                <label htmlFor="name" className="block text-xs font-mono text-[#64748b] mb-1.5">
+                <label htmlFor="name" className="block text-xs font-mono text-[#6b7d9b] mb-1.5">
                   Name
                 </label>
                 <input type="text" id="name" name="name" required className={inputClass} placeholder="Your name" />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs font-mono text-[#64748b] mb-1.5">
+                <label htmlFor="email" className="block text-xs font-mono text-[#6b7d9b] mb-1.5">
                   Email
                 </label>
                 <input type="email" id="email" name="email" required className={inputClass} placeholder="your@email.com" />
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-xs font-mono text-[#64748b] mb-1.5">
+                <label htmlFor="subject" className="block text-xs font-mono text-[#6b7d9b] mb-1.5">
                   Subject
                 </label>
                 <input type="text" id="subject" name="subject" required className={inputClass} placeholder="What's this about?" />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-mono text-[#64748b] mb-1.5">
+                <label htmlFor="message" className="block text-xs font-mono text-[#6b7d9b] mb-1.5">
                   Message
                 </label>
                 <textarea
@@ -246,7 +246,7 @@ export function Contact() {
                 )}
               </button>
 
-              <p className="text-xs text-center font-mono text-[#475569]">
+              <p className="text-xs text-center font-mono text-[#738094]">
                 Or email at{" "}
                 <a href={`mailto:${personalInfo.email}`} className="text-[#22d3ee] hover:underline">
                   {personalInfo.email}

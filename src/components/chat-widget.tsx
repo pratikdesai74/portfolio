@@ -156,7 +156,7 @@ export function ChatWidget() {
               {/* Dismiss */}
               <button
                 onClick={() => { setShowTeaser(false); setTeaserDismissed(true); }}
-                className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#1e293b] border border-[#334155] text-[#475569] hover:text-[#94a3b8] flex items-center justify-center"
+                className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#1e293b] border border-[#334155] text-[#738094] hover:text-[#94a3b8] flex items-center justify-center"
                 aria-label="Dismiss"
               >
                 <X className="w-2.5 h-2.5" />
@@ -165,7 +165,7 @@ export function ChatWidget() {
                 <Sparkles className="w-3 h-3 text-[#22d3ee] shrink-0" />
                 <span className="text-xs font-semibold text-[#e2e8f0]">AI knows everything about me!</span>
               </div>
-              <p className="text-[11px] text-[#64748b] leading-snug">
+              <p className="text-[11px] text-[#6b7d9b] leading-snug">
                 Ask about my projects, skills, or experience →
               </p>
               {/* Arrow pointing to button */}
@@ -256,13 +256,13 @@ export function ChatWidget() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#e2e8f0]">Ask about Pratik</p>
-                  <p className="text-[10px] font-mono text-[#475569]">
+                  <p className="text-[10px] font-mono text-[#738094]">
                     Powered by Groq · llama-3.3-70b
                   </p>
                 </div>
                 <button
                   onClick={() => setOpen(false)}
-                  className="ml-auto text-[#475569] hover:text-[#94a3b8] transition-colors"
+                  className="ml-auto text-[#738094] hover:text-[#94a3b8] transition-colors"
                   aria-label="Close"
                 >
                   <X className="w-4 h-4" />
@@ -280,7 +280,7 @@ export function ChatWidget() {
                       <button
                         key={q}
                         onClick={() => sendMessage(q)}
-                        className="w-full text-left text-xs p-2.5 rounded-xl bg-[#0a0f1e] border border-[#1e293b] text-[#64748b] hover:border-[#22d3ee]/30 hover:text-[#22d3ee] transition-all"
+                        className="w-full text-left text-xs p-2.5 rounded-xl bg-[#0a0f1e] border border-[#1e293b] text-[#6b7d9b] hover:border-[#22d3ee]/30 hover:text-[#22d3ee] transition-all"
                       >
                         {q}
                       </button>

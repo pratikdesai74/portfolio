@@ -67,7 +67,7 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 rounded-lg text-[#475569] hover:text-[#22d3ee] hover:bg-[#22d3ee]/10 transition-colors z-10 relative"
+                      className="p-1.5 rounded-lg text-[#738094] hover:text-[#22d3ee] hover:bg-[#22d3ee]/10 transition-colors z-10 relative"
                       aria-label="GitHub"
                     >
                       <Github className="w-4 h-4" />
@@ -79,7 +79,7 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 rounded-lg text-[#475569] hover:text-[#22d3ee] hover:bg-[#22d3ee]/10 transition-colors z-10 relative"
+                      className="p-1.5 rounded-lg text-[#738094] hover:text-[#22d3ee] hover:bg-[#22d3ee]/10 transition-colors z-10 relative"
                       aria-label="Live demo"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -89,7 +89,7 @@ export function Projects() {
               </div>
 
               {/* Description */}
-              <p className="text-[#64748b] text-sm leading-relaxed mb-4 line-clamp-3">
+              <p className="text-[#6b7d9b] text-sm leading-relaxed mb-4 line-clamp-3">
                 {project.longDescription}
               </p>
 
@@ -99,7 +99,7 @@ export function Projects() {
                   {project.metrics.map((metric) => (
                     <div key={metric.label}>
                       <div className="text-base font-bold font-display gradient-text">{metric.value}</div>
-                      <div className="text-xs text-[#475569]">{metric.label}</div>
+                      <div className="text-xs text-[#738094]">{metric.label}</div>
                     </div>
                   ))}
                 </div>
@@ -110,7 +110,7 @@ export function Projects() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-0.5 text-xs font-mono rounded-md bg-[#0a0f1e] text-[#64748b] border border-[#1e293b]"
+                    className="px-2 py-0.5 text-xs font-mono rounded-md bg-[#0a0f1e] text-[#6b7d9b] border border-[#1e293b]"
                   >
                     {tech}
                   </span>
@@ -145,7 +145,7 @@ export function Projects() {
           href="https://github.com/pratikdesai74"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-mono text-[#738094] hover:text-[#22d3ee] transition-colors"
         >
           View more on GitHub
           <ArrowUpRight className="w-3.5 h-3.5" />

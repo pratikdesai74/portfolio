@@ -43,7 +43,7 @@ export function Navigation() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
         onClick={() => setIsMobileMenuOpen(true)}
-        className="fixed top-5 right-5 z-50 p-2.5 rounded-full lg:hidden glass"
+        className="fixed top-5 right-5 z-[60] p-2.5 rounded-full lg:hidden glass"
         aria-label="Open navigation menu"
       >
         <Menu className="w-5 h-5 text-[#94a3b8]" />
@@ -56,7 +56,7 @@ export function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 lg:hidden"
+            className="fixed inset-0 z-[60] lg:hidden"
           >
             <motion.div
               initial={{ opacity: 0 }}
@@ -95,7 +95,7 @@ export function Navigation() {
                         : "text-[#94a3b8] hover:text-[#e2e8f0] hover:bg-[#1e293b]"
                     )}
                   >
-                    <span className="font-mono text-xs text-[#475569] mr-3">
+                    <span className="font-mono text-xs text-[#738094] mr-3">
                       {String(index + 1).padStart(2, "0")}.
                     </span>
                     {item.label}

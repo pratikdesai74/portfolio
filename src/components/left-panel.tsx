@@ -91,21 +91,39 @@ export function LeftPanel() {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.35 }}
-          className="mb-5 flex items-center gap-2.5 bg-[#22d3ee]/5 border border-[#22d3ee]/15 rounded-xl px-3 py-2.5"
+          className="mb-3 flex items-center gap-2.5 bg-[#22d3ee]/5 border border-[#22d3ee]/15 rounded-xl px-3 py-2.5"
         >
           <span className="text-base shrink-0">🤖</span>
-          <p className="text-xs text-[#64748b] leading-snug">
+          <p className="text-xs text-[#6b7d9b] leading-snug">
             New —{" "}
             <span className="text-[#e2e8f0] font-medium">ask the AI anything about my work</span>
             {" "}↘
           </p>
         </motion.div>
 
+        {/* Agentic AI series highlight */}
+        <motion.a
+          href="#blog"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.37 }}
+          className="mb-5 flex items-center gap-2.5 bg-[#6366f1]/10 border border-[#6366f1]/25 rounded-xl px-3 py-2.5 hover:bg-[#6366f1]/15 transition-colors"
+        >
+          <span className="text-base shrink-0">✍️</span>
+          <p className="text-xs text-[#94a3b8] leading-snug">
+            Currently writing —{" "}
+            <span className="text-[#e2e8f0] font-medium">
+              &ldquo;Back to First Principles&rdquo;, a series on Agentic AI
+            </span>
+            {" "}↘
+          </p>
+        </motion.a>
+
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.4 }}
-          className="text-[#64748b] leading-relaxed max-w-xs text-sm mb-1"
+          className="text-[#6b7d9b] leading-relaxed max-w-xs text-sm mb-1"
         >
           <StreamingText
             text="Building high-scale event-driven platforms and AI-powered developer tools. Java · Spring Boot · Kafka at the core."
@@ -118,7 +136,7 @@ export function LeftPanel() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.45 }}
-          className="text-xs text-[#475569] font-mono leading-relaxed"
+          className="text-xs text-[#738094] font-mono leading-relaxed"
         >
           Platform Engineering · Distributed Systems<br />
           LLM, RAG &amp; Multi-Agent Architecture
@@ -162,7 +180,7 @@ export function LeftPanel() {
               <span
                 className={cn(
                   "text-xs font-mono tracking-widest uppercase transition-colors duration-200",
-                  isActive ? "text-[#e2e8f0]" : "text-[#475569] group-hover:text-[#94a3b8]"
+                  isActive ? "text-[#e2e8f0]" : "text-[#738094] group-hover:text-[#94a3b8]"
                 )}
               >
                 {item.label}
@@ -203,7 +221,7 @@ export function LeftPanel() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="text-[#475569] hover:text-[#22d3ee] transition-colors"
+            className="text-[#738094] hover:text-[#22d3ee] transition-colors"
           >
             <Github className="w-5 h-5" />
           </a>
@@ -212,7 +230,7 @@ export function LeftPanel() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-[#475569] hover:text-[#22d3ee] transition-colors"
+            className="text-[#738094] hover:text-[#22d3ee] transition-colors"
           >
             <Linkedin className="w-5 h-5" />
           </a>
@@ -221,7 +239,7 @@ export function LeftPanel() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LeetCode"
-            className="text-[#475569] hover:text-[#22d3ee] transition-colors text-xs font-bold font-mono"
+            className="text-[#738094] hover:text-[#22d3ee] transition-colors text-xs font-bold font-mono"
           >
             LC
           </a>
@@ -230,7 +248,7 @@ export function LeftPanel() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Medium"
-            className="text-[#475569] hover:text-[#22d3ee] transition-colors text-xs font-bold font-mono"
+            className="text-[#738094] hover:text-[#22d3ee] transition-colors text-xs font-bold font-mono"
           >
             M
           </a>

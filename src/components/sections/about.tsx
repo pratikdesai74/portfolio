@@ -40,7 +40,7 @@ function StatCard({ stat, active }: { stat: { label: string; value: string }; ac
   return (
     <div className="p-4 rounded-xl bg-[#111827] border border-[#1e293b] hover:border-[#22d3ee]/20 transition-colors">
       <div className="text-2xl font-bold font-display gradient-text">{displayValue}</div>
-      <div className="text-xs text-[#64748b] mt-1">{stat.label}</div>
+      <div className="text-xs text-[#6b7d9b] mt-1">{stat.label}</div>
     </div>
   );
 }
@@ -135,7 +135,7 @@ export function About() {
             <Award className="w-3.5 h-3.5 text-[#22d3ee]" />
             IBS Intelligence Award Winner
           </span>
-          <span className="font-mono text-xs text-[#475569]">7.5+ yrs · distributed systems & AI platforms</span>
+          <span className="font-mono text-xs text-[#738094]">7.5+ yrs · distributed systems & AI platforms</span>
         </div>
       </motion.div>
 
@@ -192,7 +192,7 @@ export function About() {
                 <div className="p-3.5 rounded-xl bg-[#111827] border border-[#1e293b] hover:border-[#22d3ee]/25 transition-colors">
                   <span className="font-mono text-xs text-[#22d3ee]">{milestone.year}</span>
                   <p className="text-sm font-semibold text-[#e2e8f0] mt-0.5">{milestone.title}</p>
-                  <p className="text-xs text-[#64748b] mt-0.5">{milestone.description}</p>
+                  <p className="text-xs text-[#6b7d9b] mt-0.5">{milestone.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -213,21 +213,21 @@ export function About() {
             <Medal className="w-4 h-4 text-[#f59e0b] mt-0.5 shrink-0" />
             <div>
               <p className="text-sm text-[#e2e8f0] font-medium">National Level Taekwondo Player</p>
-              <p className="text-xs text-[#64748b] mt-0.5">Multiple Gold Medals · Represented Maharashtra State</p>
+              <p className="text-xs text-[#6b7d9b] mt-0.5">Multiple Gold Medals · Represented Maharashtra State</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Guitar className="w-4 h-4 text-[#6366f1] mt-0.5 shrink-0" />
             <div>
               <p className="text-sm text-[#e2e8f0] font-medium">Indie-Rock Band Member</p>
-              <p className="text-xs text-[#64748b] mt-0.5">Guitarist & Vocalist · Hard Rock Cafe, Blue Frog</p>
+              <p className="text-xs text-[#6b7d9b] mt-0.5">Guitarist & Vocalist · Hard Rock Cafe, Blue Frog</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Lightbulb className="w-4 h-4 text-[#22c55e] mt-0.5 shrink-0" />
             <div>
               <p className="text-sm text-[#e2e8f0] font-medium">Product Builder at Heart</p>
-              <p className="text-xs text-[#64748b] mt-0.5">Love turning ideas into reality from scratch</p>
+              <p className="text-xs text-[#6b7d9b] mt-0.5">Love turning ideas into reality from scratch</p>
             </div>
           </div>
         </div>

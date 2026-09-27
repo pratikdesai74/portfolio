@@ -40,7 +40,7 @@ export function Testimonials() {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="text-sm text-[#64748b] mb-8"
+        className="text-sm text-[#6b7d9b] mb-8"
       >
         Recommendations from colleagues and leaders I&apos;ve had the privilege to work with.
       </motion.p>
@@ -66,7 +66,7 @@ export function Testimonials() {
             </div>
             <div>
               <div className="font-semibold text-[#e2e8f0] text-sm">{FEATURED[1].name}</div>
-              <div className="text-xs text-[#64748b]">
+              <div className="text-xs text-[#6b7d9b]">
                 {FEATURED[1].role} · {FEATURED[1].company}
               </div>
             </div>
@@ -95,7 +95,7 @@ export function Testimonials() {
                 </div>
                 <div>
                   <div className="font-semibold text-[#e2e8f0] text-xs">{t.name}</div>
-                  <div className="text-[10px] text-[#64748b]">{t.role}</div>
+                  <div className="text-[10px] text-[#6b7d9b]">{t.role}</div>
                 </div>
               </div>
             </motion.div>
@@ -113,7 +113,7 @@ export function Testimonials() {
           href={personalInfo.social.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-[#738094] hover:text-[#22d3ee] transition-colors"
         >
           View all {testimonials.length} recommendations on LinkedIn
           <ExternalLink className="w-3 h-3" />

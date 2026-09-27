@@ -60,7 +60,7 @@ export function Experience() {
                 "border-b-2 sm:border-b-0 sm:border-l-2 -mb-px sm:-mb-0 sm:-ml-px",
                 activeTab === index
                   ? "border-[#22d3ee] text-[#22d3ee] bg-[#22d3ee]/5"
-                  : "border-transparent text-[#64748b] hover:text-[#94a3b8] hover:bg-[#111827]/60"
+                  : "border-transparent text-[#6b7d9b] hover:text-[#94a3b8] hover:bg-[#111827]/60"
               )}
             >
               {e.company}
@@ -84,9 +84,9 @@ export function Experience() {
               </h3>
               <p className="text-sm mb-0.5">
                 <span className="text-[#22d3ee] font-medium">{exp.company}</span>
-                <span className="text-[#475569]"> · {exp.companyDescription}</span>
+                <span className="text-[#738094]"> · {exp.companyDescription}</span>
               </p>
-              <p className="font-mono text-xs text-[#475569] mb-5">
+              <p className="font-mono text-xs text-[#738094] mb-5">
                 {exp.period} · {exp.location}
               </p>
 

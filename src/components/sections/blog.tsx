@@ -7,6 +7,39 @@ import { ArrowUpRight, BookOpen, Calendar, Clock } from "lucide-react";
 // Back to First Principles — a 10-part series on AI from the ground up.
 const blogPosts = [
   {
+    title: "RAG: How Agents Stop Making Things Up",
+    description:
+      "LLMs hallucinate facts they were never trained on. RAG turns a closed-book exam into an open-book one — chunk documents on semantic boundaries, embed them, retrieve by meaning, and inject the right passages into context before the model ever answers.",
+    date: "Sep 2026",
+    readTime: "7 min read",
+    tags: ["RAG", "Vector Databases", "Embeddings"],
+    link: "https://www.linkedin.com/pulse/rag-how-agents-stop-making-things-up-pratik-desai-loyef",
+    type: "article",
+    series: "Back to First Principles · Part 7",
+  },
+  {
+    title: "Tool Engineering: The Agent Never Sees Your Code",
+    description:
+      "The LLM reads a schema, not your function body — so an imprecise tool description silently corrupts multi-step agent workflows. Covers function calling mechanics, tool selection, parallel execution, and MCP as the emerging standard for wiring agents to tools.",
+    date: "Aug 2026",
+    readTime: "8 min read",
+    tags: ["MCP", "Function Calling", "Backend Engineering"],
+    link: "https://www.linkedin.com/pulse/tool-engineering-agent-never-sees-your-code-pratik-desai-3pkgf",
+    type: "article",
+    series: "Back to First Principles · Part 6",
+  },
+  {
+    title: "What Is an AI Agent — And Why Does It Feel Like Backend Engineering?",
+    description:
+      "Agents differ from chatbots by completing goals through multi-step reasoning and tool use, not single answers. Building one is system design, not prompt engineering: the ReAct loop, LangChain vs. LangGraph, and where prompt engineering actually fits in.",
+    date: "Jul 2026",
+    readTime: "7 min read",
+    tags: ["ReAct", "LangGraph", "Agent Architecture"],
+    link: "https://www.linkedin.com/pulse/what-ai-agent-why-does-feel-like-backend-engineering-pratik-desai-htkaf",
+    type: "article",
+    series: "Back to First Principles · Part 5",
+  },
+  {
     title: "The LLM Is Brilliant. And Completely Helpless.",
     description:
       "Every LLM hits three walls: a knowledge cutoff, a context window, and no ability to act in the world. Here's exactly why — and how agents were built to close the gap.",
@@ -68,7 +101,7 @@ function CardInner({ post, linked }: { post: Post; linked: boolean }) {
             </span>
           )}
           {post.type === "post" && (
-            <span className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#475569]/20 text-[#64748b] border border-[#475569]/20">
+            <span className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#475569]/20 text-[#6b7d9b] border border-[#475569]/20">
               Post
             </span>
           )}
@@ -82,7 +115,7 @@ function CardInner({ post, linked }: { post: Post; linked: boolean }) {
         {post.title}
       </h3>
 
-      <p className="text-sm text-[#64748b] mb-4 line-clamp-3 leading-relaxed">
+      <p className="text-sm text-[#6b7d9b] mb-4 line-clamp-3 leading-relaxed">
         {post.description}
       </p>
 
@@ -90,14 +123,14 @@ function CardInner({ post, linked }: { post: Post; linked: boolean }) {
         {post.tags.map((tag) => (
           <span
             key={tag}
-            className="px-2 py-0.5 text-xs font-mono rounded-md bg-[#0a0f1e] text-[#64748b] border border-[#1e293b]"
+            className="px-2 py-0.5 text-xs font-mono rounded-md bg-[#0a0f1e] text-[#6b7d9b] border border-[#1e293b]"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center justify-between text-xs font-mono text-[#475569] pt-3 border-t border-[#1e293b]">
+      <div className="flex items-center justify-between text-xs font-mono text-[#738094] pt-3 border-t border-[#1e293b]">
         <span className="flex items-center gap-1">
           <Calendar className="w-3 h-3" />
           {post.date}
@@ -183,7 +216,7 @@ export function Blog() {
           href="https://www.linkedin.com/in/pratikdesai99/recent-activity/articles/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-mono text-[#738094] hover:text-[#22d3ee] transition-colors"
         >
           View all articles on LinkedIn
           <ArrowUpRight className="w-3.5 h-3.5" />

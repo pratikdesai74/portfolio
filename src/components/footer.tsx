@@ -16,7 +16,7 @@ export function Footer() {
           viewport={{ once: true }}
           className="text-center md:text-left"
         >
-          <p className="text-xs font-mono text-[#475569]">
+          <p className="text-xs font-mono text-[#738094]">
             &copy; {currentYear} {personalInfo.name}. All rights reserved.
           </p>
           <p className="flex items-center justify-center md:justify-start gap-1 mt-1 text-xs font-mono text-[#334155]">
@@ -35,7 +35,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="text-[#475569] hover:text-[#22d3ee] transition-colors"
+            className="text-[#738094] hover:text-[#22d3ee] transition-colors"
           >
             <Github className="w-4 h-4" />
           </a>
@@ -44,7 +44,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-[#475569] hover:text-[#22d3ee] transition-colors"
+            className="text-[#738094] hover:text-[#22d3ee] transition-colors"
           >
             <Linkedin className="w-4 h-4" />
           </a>
@@ -53,7 +53,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Medium"
-            className="text-xs font-bold font-mono text-[#475569] hover:text-[#22d3ee] transition-colors"
+            className="text-xs font-bold font-mono text-[#738094] hover:text-[#22d3ee] transition-colors"
           >
             M
           </a>

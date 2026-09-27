@@ -127,7 +127,7 @@ function AgentCard({ agent, status }: { agent: Agent; status: AgentStatus }) {
             {status === "done" ? "✓ done" : status === "running" ? "● running" : "○ idle"}
           </span>
         </div>
-        <p className="text-[10px] text-[#475569] font-mono mt-0.5">{agent.source}</p>
+        <p className="text-[10px] text-[#738094] font-mono mt-0.5">{agent.source}</p>
 
         <AnimatePresence>
           {status === "done" && (
@@ -184,11 +184,11 @@ function ResultPanel({ isLive, liveText, isStreaming }: {
       ) : (
         <>
           <div className="mb-3">
-            <p className="text-[10px] font-mono text-[#475569] uppercase tracking-wider mb-1">Cause</p>
+            <p className="text-[10px] font-mono text-[#738094] uppercase tracking-wider mb-1">Cause</p>
             <p className="text-xs text-[#e2e8f0] leading-relaxed">{STATIC_RESULT.cause}</p>
           </div>
           <div>
-            <p className="text-[10px] font-mono text-[#475569] uppercase tracking-wider mb-1">Proposed Fix</p>
+            <p className="text-[10px] font-mono text-[#738094] uppercase tracking-wider mb-1">Proposed Fix</p>
             <p className="text-xs text-[#e2e8f0] leading-relaxed">
               {STATIC_RESULT.fix}{" "}
               <span className="text-[#22c55e]">P95 recovers in &lt; 5 min.</span>
@@ -387,13 +387,13 @@ export function AgentPipeline() {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="text-sm text-[#64748b] mb-6 max-w-xl"
+        className="text-sm text-[#6b7d9b] mb-6 max-w-xl"
       >
         Picks a P1 ticket from{" "}
         <span className="text-[#22d3ee] font-mono">Jira MCP</span>, gathers context from code, logs,
         DB, S3 &amp; SQS, then synthesises a root cause + fix with{" "}
         <span className="text-[#a78bfa] font-mono">llama-3.3-70b</span> via Groq.{" "}
-        <span className="text-[#475569]">— running automatically ↓</span>
+        <span className="text-[#738094]">— running automatically ↓</span>
       </motion.p>
 
       {/* Tech badges */}
@@ -422,7 +422,7 @@ export function AgentPipeline() {
           {/* Jira ticket — warm critical accent */}
           <div className="p-4 rounded-2xl bg-[#111726] border border-[#1e2638]">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono text-[#64748b] uppercase tracking-wider">
+              <span className="text-[10px] font-mono text-[#6b7d9b] uppercase tracking-wider">
                 <span className="text-[#f87171]">●</span> Jira · {SAMPLE_TICKET.env}
               </span>
               <span className="px-2 py-0.5 text-[10px] font-mono rounded bg-red-500/10 border border-red-500/25 text-red-400">
@@ -435,11 +435,11 @@ export function AgentPipeline() {
             </p>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-[10px] font-mono text-[#475569] uppercase mb-0.5">Occurrences</p>
+                <p className="text-[10px] font-mono text-[#738094] uppercase mb-0.5">Occurrences</p>
                 <p className="text-xs text-[#e2e8f0] font-semibold">{SAMPLE_TICKET.occurrences}</p>
               </div>
               <div>
-                <p className="text-[10px] font-mono text-[#475569] uppercase mb-0.5">Revenue Impact</p>
+                <p className="text-[10px] font-mono text-[#738094] uppercase mb-0.5">Revenue Impact</p>
                 <p className="text-xs text-[#fbbf24] font-semibold">{SAMPLE_TICKET.impact}</p>
               </div>
             </div>
@@ -472,7 +472,7 @@ export function AgentPipeline() {
               </button>
               <button
                 onClick={handleReset}
-                className="p-2.5 rounded-xl border border-[#1e293b] text-[#64748b] hover:text-[#94a3b8] hover:border-[#334155] transition-colors"
+                className="p-2.5 rounded-xl border border-[#1e293b] text-[#6b7d9b] hover:text-[#94a3b8] hover:border-[#334155] transition-colors"
                 aria-label="Reset"
               >
                 <RotateCcw className="w-4 h-4" />
@@ -489,7 +489,7 @@ export function AgentPipeline() {
 
           {/* Streaming log panel */}
           <div className="p-4 rounded-2xl bg-[#0b1120] border border-[#1e2638] min-h-[120px]">
-            <p className="text-[10px] font-mono text-[#475569] uppercase tracking-wider mb-3">
+            <p className="text-[10px] font-mono text-[#738094] uppercase tracking-wider mb-3">
               // agent_runtime · stream
             </p>
             <div className="space-y-0.5">
@@ -533,7 +533,7 @@ export function AgentPipeline() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, delay: 0.25 }}
         >
-          <p className="text-[10px] font-mono text-[#475569] uppercase tracking-wider mb-3">
+          <p className="text-[10px] font-mono text-[#738094] uppercase tracking-wider mb-3">
             // agent_runtime · 8 agents
           </p>
           <div className="space-y-2">
@@ -549,7 +549,7 @@ export function AgentPipeline() {
           {/* Architecture flow */}
           <div className="mt-4 p-3 rounded-xl bg-[#0a0f1e] border border-[#1e293b]/50">
             <p className="text-[10px] font-mono text-[#334155] mb-1.5">// architecture</p>
-            <div className="flex items-center gap-1 flex-wrap text-[10px] font-mono text-[#475569]">
+            <div className="flex items-center gap-1 flex-wrap text-[10px] font-mono text-[#738094]">
               <span className="text-[#22d3ee]">Jira MCP</span>
               <ChevronRight className="w-2.5 h-2.5" />
               <span className="text-[#6366f1]">Context Agents</span>
